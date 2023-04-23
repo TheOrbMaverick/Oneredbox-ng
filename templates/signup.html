@@ -1,0 +1,56 @@
+{% extends 'base.html'%}
+
+{% block title %}
+<title>Oneredbox - Sign up</title>
+{% endblock %}
+
+<body id="signuppage">
+    {% block content %}
+    <section>
+        <div class="mainCard">
+            <div class="form_signup">
+                <!-- GET requests are not safe. POST requests are safer, don't appear in the browser line and cannot be cached -->
+                <form action="#" method="POST">
+                    <h2 class="finances">Sign up</h2>
+                    <div class="inputbox">
+                        <input type="text" name="firstName" required>
+                        <span>First name</span>
+                        <i></i>
+                    </div>
+                    <div class="inputbox">
+                        <input type="text" name="lastName" required>
+                        <span>Last Name</span>
+                        <i></i>
+                    </div>
+                    <div class="inputbox">
+                        <input type="email" name="email" required>
+                        <span>Email Address</span>
+                        <i></i>
+                    </div>
+                    <div class="inputbox">
+                        <input type="date" name="dOB" required>
+                        <span>Date of Birth</span>
+                        <i></i>
+                    </div>
+                    <div class="inputbox">
+                        <input type="password" name="uPass" id="createPass" required>
+                        <span>Password</span>
+                        <span class="passwarning" id="passwarning" style="display:none;">__________ must contain numbers, special characters, upper case and lower case characters</span>
+                        <i></i>
+                    </div>
+                    <div class="inputbox">
+                        <input type="password" name="uCpass" id="confirmPass" required>
+                        <span>Confrim Password</span>
+                        <span class="passwarning" id="confirm_passwarning" style="display:none;">___________________ Passwords must match</span>
+                        <i></i>
+                    </div>
+                    <div class="links" id="login">
+                        <a href="#">Login</a>
+                    </div>
+                    <button type="submit" href="#" class="formBtn" id="mainSignupButton">SIGN UP</button> 
+                </form>
+            </div>
+        </div>
+    </section>
+    {% endblock %} 
+</body>

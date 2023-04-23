@@ -1,0 +1,61 @@
+{% extends 'base.html'%}
+
+{% block title %}
+<title>Oneredbox.ng - Our Projects</title>
+{% endblock %}
+
+<body id="projectpage">
+    {% block content %}
+        <section>
+            <div class="img-slider">
+                <div class="slide active">
+                    <img class = "imageGallery" src="{{url_for('static', filename = '/images/living_room_kview.jpg')}}" alt="">
+                    <div class = "info">
+                        <h2>Featured Construction project</h2>
+                        <p>
+                            We sell trust for construction projects.
+                            We design and build spaces for Nigerians in diaspora and at home
+                        </p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img class = "imageGallery" src="{{url_for('static', filename = '/images/living_room_cview.jpg')}}" alt="">
+                    <div class = "info">
+                        <h2>Featured Interior projects</h2>
+                        <p>
+                            We sell trust for construction projects.
+                            We design and build spaces for Nigerians in diaspora and at home
+                        </p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img class = "imageGallery" src="{{url_for('static', filename = '/images/bathroom.jpg')}}" alt="">
+                    <div class="info">
+                        <h2>Featured Interior projects</h2>
+                        <p>
+                            We sell trust for construction projects.
+                            We design and build spaces for Nigerians in diaspora and at home
+                        </p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img class = "imageGallery" src="{{url_for('static', filename = '/images/bedroom.jpg')}}" alt="">
+                    <div class="info">
+                        <h2>Featured Interior projects</h2>
+                        <p>
+                            We sell trust for construction projects.
+                            We design and build spaces for Nigerians in diaspora and at home
+                        </p>
+                    </div>
+                </div>
+                <div class = "navigation">
+                    <div class = "btn active"></div>
+                    <div class = "btn"></div>
+                    <div class = "btn"></div>
+                    <div class = "btn"></div>
+                </div>
+            </div>
+        </section>
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,73 @@
+{% extends 'base.html'%}
+
+{% block title %}
+<title>Oneredbox.ng - Your construction company</title>
+{% endblock %}
+
+<body id="homepage">
+    {% block content %}
+        <section id="construction">
+            <div class="mainCard">
+                <div class="maincontent">
+                    <h1 class="headingText">The Only construction company you'd ever need</h1>
+                    <p class="paraText">
+                        We sell trust for construction projects.
+                        We design and build spaces for Nigerians in diaspora and at home
+                        all your ongoing projects with us are available on your personal 
+                        dashboard with financial transparency and constant project updates 
+                        on how far your project has come. You no longer have to worry about cousin Fidelis
+                    </p>
+                    <img class = "mainImage" src="{{url_for('static', filename = '/images/living_room_kview.jpg')}}" alt="">
+                    <a href="#" class="mainBtn" id="goToSignUp">design and build my space</a> 
+                </div>
+            </div> 
+        </section>
+        <section id="projects">
+            <div class="mainCard">
+                <div class="maincontent">
+                    <h1 class="headingText">Projects</h1>
+                    <p class="paraText">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Non sunt asperiores libero aspernatur suscipit eveniet 
+                        excepturi iusto saepe est? Architecto, esse et eius praesentium eum a 
+                        nostrum sint consequatur quam?
+                    </p>
+                    <img class = "mainImage" src="{{url_for('static', filename = '/images/living_room_kview.jpg')}}" alt="">
+                    <a href="#" class="mainBtn" id="goToProjects">I want to see more projects</a> 
+                </div>
+            </div>
+        </section>
+        <section id="tinyhouse">
+            <div class="mainCard">
+                <div class="maincontent">
+                    <h1 class="headingText">Tinyhouse</h1>
+                    <p class="paraText">
+                            
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Non sunt asperiores libero aspernatur suscipit eveniet 
+                        excepturi iusto saepe est? Architecto, esse et eius praesentium eum a 
+                        nostrum sint consequatur quam?
+                    </p>
+                    <img class = "mainImage" src="{{url_for('static', filename = '/images/living_room_kview.jpg')}}" alt="">
+                    <a href="{{url_for('signup') }}" class="mainBtn" id="mainButton">Build my Tiny House</a> 
+                </div>
+            </div> 
+        </section>
+        <section id="footer">
+            <div class="mainCard" id="tinymain">
+                <div class="maincontent">
+                    <h1 class="headingText">Quote for my project</h1>
+                    <p class="paraText">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Non sunt asperiores libero aspernatur suscipit eveniet 
+                        excepturi iusto saepe est? Architecto, esse et eius praesentium eum a 
+                        nostrum sint consequatur quam?
+                    </p>
+                    <img class = "mainImage" src="{{url_for('static', filename = '/images/living_room_kview.jpg')}}" alt="">
+                    <a href="{{url_for('getfreeQuote') }}" class="mainBtn" id="getProjectQuote">I would like to get a free quote</a> 
+                </div>
+            </div>
+        </section>
+    {% endblock %}
+</body>
+</html>

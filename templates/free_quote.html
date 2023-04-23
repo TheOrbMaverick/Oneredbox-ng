@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Oneredbox - Get Free Quote</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename = 'css/dashstyle.css') }}">
+        <script src="{{ url_for('static', filename = 'js/jquery.js') }}"></script>
+        <script src="{{ url_for('static', filename = 'js/bootstrap.js') }}"></script>
+    </head>
+    <body id="FreeQuotePage">
+        <div class="form">
+            <form class="project-form" action="#" method="POST">
+                <h3 id="heading">CREATE PROJECT</h3>
+                <div class="new-project">
+                    <div class="space">
+                        <h3 class="title">Bedroom</h3>
+                        <div class="counter">
+                            <button class="counter-button" data-direction="decrement">-</button>
+                            <h3 class="counter-value" id="bdrm">0</h3>
+                            <button class="counter-button" data-direction="increment">+</button>
+                        </div>
+                    </div>
+                    <div class="space">
+                        <h3 class="title">Living Room</h3>
+                        <div class="counter">
+                            <button class="counter-button" data-direction="decrement">-</button>
+                            <h3 class="counter-value" id="livrm">0</h3>
+                            <button class="counter-button" data-direction="increment">+</button>
+                        </div>
+                    </div>
+                    <div class="space">
+                        <h3 class="title">Study</h3>
+                        <div class="counter">
+                            <button class="counter-button" data-direction="decrement">-</button>
+                            <h3 class="counter-value" id="study">0</h3>
+                            <button class="counter-button" data-direction="increment">+</button>
+                        </div>
+                    </div>
+                    <div class="space">
+                        <h3 class="title">Toilet with bath</h3>
+                        <div class="counter">
+                            <button class="counter-button" data-direction="decrement">-</button>
+                            <h3 class="counter-value" id="toi-bath">0</h3>
+                            <button class="counter-button" data-direction="increment">+</button>
+                        </div>
+                    </div>
+                    <div class="space">
+                        <h3 class="title">Toilet without bath</h3>
+                        <div class="counter">
+                            <button class="counter-button" data-direction="decrement">-</button>
+                            <h3 class="counter-value" id="toi-wo-bath">0</h3>
+                            <button class="counter-button" data-direction="increment">+</button>
+                        </div>
+                    </div>
+                    <div class="space">
+                        <h3 class="title">Kitchen</h3>
+                        <div class="counter">
+                            <button class="counter-button" data-direction="decrement">-</button>
+                            <h3 class="counter-value" id="kitchen">0</h3>
+                            <button class="counter-button" data-direction="increment">+</button>
+                        </div>
+                    </div>
+                    <div class="space">
+                        <h3 class="title">Commercial space (number of people)</h3>
+                        <div class="counter">
+                            <button class="counter-button" data-direction="decrement">-</button>
+                            <h3 class="counter-value" id="commercial">0</h3>
+                            <button class="counter-button" data-direction="increment">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="space">
+                    <button type="submit" class="submit-project" id="submit-project">Create Project</button>
+                </div>
+            </form>
+        </div>
+        <script src="{{url_for('static', filename = 'js/script.js') }}"></script>
+    </body>
+</html>

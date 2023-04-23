@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% block title %}{% endblock %}
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@1&family=Lobster&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100&family=Libre+Baskerville:ital@1&family=Lobster&display=swap" rel="stylesheet">
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+        <link rel="stylesheet" href="{{ url_for('static', filename = 'css/bootstrap.css') }}"> 
+        <link rel="stylesheet" href="{{ url_for('static', filename = 'css/style.css') }}"> 
+        <script src="{{ url_for('static', filename = 'js/jquery.js') }}"></script>
+        <script src="{{ url_for('static', filename = 'js/bootstrap.js') }}"></script>
+    </head>
+    <body>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body text-center">
+                        {% for message in messages %}
+                        <p>{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endwith %}
+
+        <div class="signinbtn">
+            <a href="{{url_for('login') }}">Login</a>
+        </div>
+        <nav class="sideNav">
+            <h2 class="logo"><a href="{{url_for('index') }}">Oneredbox<span class="ng">.ng</span></a></h2>
+            <ul>
+                <li><a href="{{url_for('index') }}#construction"><img src="../static/images/construction-64.png" alt="" class="white_circle"> </div></a></li>
+                <li><a href="{{url_for('index') }}#tinyhouse"><img src="../static/images/house-64.png" alt="" class="white_circle"></div></a></li>
+                <li><a href="{{url_for('index') }}#projects"><img src="../static/images/icons8-clipboard-64.png" alt="" class="white_circle"></div></a></li>
+                <li><a href="{{url_for('index') }}#footer"><img src="../static/images/account-50.png" alt="" class="white_circle"></div></a></li>
+            </ul>
+        </nav>
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+        <script src="{{ url_for('static', filename = 'js/script.js') }}"></script>
+    </body>
+</html>
