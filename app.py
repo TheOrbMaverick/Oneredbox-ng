@@ -1,6 +1,6 @@
 from datetime import date
 from flask import Flask, render_template, url_for, request, redirect
-#from flask_mysqldb import MySQL 
+#from flask_mysqldb import MySQL
 
 # installed mysql-connector-python using pip to be able to access this so I do not need to import the mysql using flask again
 import mysql.connector
@@ -16,7 +16,7 @@ import bcrypt
 import random
 import string
 
- 
+
 app = Flask(__name__)
 
 load_dotenv()
@@ -29,10 +29,10 @@ paystackApiKey = os.environ['PAYSTACK_API_KEY']
 
 #specified the database here with and stored it in cnx
 config = {
-    'user': 'root',
+    'user': 'TheOrbMaverick',
     'password': dbPass,
-    'host': 'localhost',
-    'database': "Oneredbox"
+    'host': dbPath,
+    'database': 'TheOrbMaverick$Oneredbox'
 }
 
 
@@ -44,6 +44,9 @@ app.config['MAIL_USE_SSL'] = True
 app.config['MAIL_USERNAME'] = 'hello@oneredbox.ng'
 app.config['MAIL_PASSWORD'] = mailPass
 app.secret_key = secretK
+
+app.config['UPLOAD_FOLDER'] = 'Oneredbox-ng/static/userpics'
+#app.config['UPLOAD_FOLDER'] = '/static/userpics'
 
 mail = Mail(app)
 
@@ -88,7 +91,7 @@ def login():
         password = request.form['inputPass']
         encodedPass = password.encode()
 
-        
+
         id_query = "SELECT * FROM clients WHERE client_email = %s"
         with cnx.cursor(dictionary=True) as cur:
             cur.execute(id_query, (inputemail, ))
@@ -100,17 +103,15 @@ def login():
         if user is not None and bcrypt.checkpw(encodedPass, hashedPassword) and inputemail == user['client_email']:
             id = user['client_id']
             login_user(User(id, inputemail, name))
-            if user['confirmed'] == 1:   
+            if user['confirmed'] == 1:
                 return redirect(url_for('dashboard'))
             else:
                 email = user['client_email']
-                
+
                 confirmation_code = ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))
                 with cnx.cursor(dictionary=True) as cur:
                     cur.execute("UPDATE clients SET confirmation_code = %s WHERE client_email = %s", (confirmation_code, inputemail))
                     cnx.commit()
-                #close the connection
-                cnx.close()
 
                 confirm_link = url_for('confirm_email', email=email, code=confirmation_code, _external=True)
                 msg = Message('Please Confirm Your Email', sender='hello@oneredbox.ng', recipients=[email])
@@ -119,11 +120,11 @@ def login():
                     mail.connect()
                     mail.send(msg)
                 return 'Please confirm your e-mail, an email has been sent!'
-        
+
         else:
             print ("no user")
 
-    
+
     return render_template("login.html")
 
 
@@ -154,7 +155,7 @@ def signup():
 
         #adding query to insert into database
         with cnx.cursor(dictionary=True) as cur:
-            cur.execute('''INSERT INTO clients (first_name, last_name, client_email, date_of_birth, password, confirmation_code, reset_token, phone_number, client_pic_path) 
+            cur.execute('''INSERT INTO clients (first_name, last_name, client_email, date_of_birth, password, confirmation_code, reset_token, phone_number, client_pic_path)
                         VALUES (%s, %s, %s, %s, %s, %s, null, null, null)''', (firstname, lastname, email, dateOfBirth, hashedPassword, confirmation_code))
             cnx.commit()
 
@@ -173,7 +174,7 @@ def signup():
 @app.route('/dashboard', methods = ['GET', 'POST'])
 @login_required
 def dashboard():
-    
+
     query = '''
     SELECT * FROM clients
     JOIN projects ON clients.client_id = projects.client_id
@@ -215,7 +216,7 @@ def dashboard():
     user_photo = picpath_dict['client_pic_path']
 
     if user_photo is not None:
-        profilepic = user_photo.replace("static/", "")
+        profilepic = user_photo.replace("Oneredbox-ng/static/", "")
     else:
         profilepic = "images/white_circle.png"
 
@@ -241,7 +242,7 @@ def get_current_user():
         return jsonify(user)
     else:
         return jsonify({'error': 'User not authenticated'})
-    
+
 
 
 @app.route('/newproject', methods = ['GET', 'POST'])
@@ -262,7 +263,7 @@ def newproject():
     twBath = spaces['Toilet with bath']
     tWoBath = spaces['Toilet without bath']
     amountPaid = 0
-    
+
 
     bedrooms = "bedroom" if bedroom == 1 else "bedrooms" if bedroom > 1 else ""
     commercial_spaces = "person commercial space" if commercial == 1 else "people commercial space" if commercial > 1 else ""
@@ -294,18 +295,18 @@ def newproject():
 
     date_added = date.today()
 
-    query1 = '''INSERT INTO projects 
-            (project_desc, contract_sum, amount_paid, commercial, t_wo_bath, t_w_bath, study, kitchen, livingRm, bedroom, total_sq_area, proj_image_path, date_added, client_id) 
+    query1 = '''INSERT INTO projects
+            (project_desc, contract_sum, amount_paid, commercial, t_wo_bath, t_w_bath, study, kitchen, livingRm, bedroom, total_sq_area, proj_image_path, date_added, client_id)
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, null, %s, %s)'''
 
-    query2 = '''INSERT INTO updates 
-                (update_desc, proj_status, project_id) 
+    query2 = '''INSERT INTO updates
+                (update_desc, proj_status, project_id)
                 VALUES (%s, %s, %s)'''
 
     update_desc = "Project brief created"
     proj_status = 0
 
-    with mysql.connector.connect(user='root', password=dbPass, host='localhost', database='Oneredbox') as cnx:
+    with mysql.connector.connect(user='TheOrbMaverick', password= dbPass, host=dbPath, database='TheOrbMaverick$Oneredbox') as cnx:
         # Insert the project
         with cnx.cursor(dictionary=True) as cur:
             cur.execute(query1, (projDesc, totalCost, amountPaid, commercial, tWoBath, twBath, study, kitchen, livrm, bedroom, totalArea, date_added, client_id))
@@ -322,7 +323,7 @@ def newproject():
     msg.body = f'''
                 Hello {current_user.name}!,
 
-                We are excited that you have created a new project. 
+                We are excited that you have created a new project.
 
                 Your project id is: {project_id}
 
@@ -353,7 +354,7 @@ def calculateArea(spaces):
 
     total = bedrooom + commercial + kitchen + livrm + study + twBath + tWoBath + circulation
     totalArea = round(total, 2)
-    
+
     return totalArea
 
 def calculateCost(area):
@@ -372,18 +373,18 @@ def confirm_email():
     with cnx.cursor(dictionary=True) as cur:
         cur.execute("SELECT client_id FROM clients WHERE client_email = %s AND confirmation_code = %s", (email, code))
         user = cur.fetchone()
-        
+
     if user:
         # Update the confirmed column value to 1 for this user
         with cnx.cursor(dictionary=True) as cur:
             cur.execute("UPDATE clients SET confirmed = 1 WHERE client_email = %s AND confirmation_code = %s", (email, code))
             cnx.commit()
 
-    
+
         return render_template('confirm_email.html')
     else:
         return 'Please confirm your email'
-    
+
 
 # Function to generate a random token
 def generate_token(email, length=30):
@@ -403,7 +404,7 @@ def forgot_password():
         with cnx.cursor(dictionary=True) as cur:
             cur.execute("SELECT client_email FROM clients where client_email = %s", (forgottenM,))
             user = cur.fetchone()
-        
+
         # If not, display an error message
         if not user:
             flash("No user with that e-mail found")
@@ -418,13 +419,13 @@ def forgot_password():
             msg = Message('Reset Your Password', sender='hello@oneredbox.ng', recipients=[email])
             msg.body = f'You requested to reset your password, please ignore this mail if it was not you. Otherwhise please click this link to reset your password: {reset_url}'
             mail.send(msg)
-            
+
             flash("A reset link has been sent to your email")
 
             cur.close()
             return redirect(url_for('projects'))
             # Redirect the user to a confirmation page
-        
+
         # send email with the reset_url to the user
 
     return render_template('forgot_password.html')
@@ -438,31 +439,31 @@ def reset_password(token):
         # Split the token into email and random string components
         email, random_string = token.split('-')
 
-        
+
         # Check if the token is valid and associated with an account
         with cnx.cursor(dictionary=True) as cur:
             cur.execute("SELECT * FROM clients WHERE client_email= %s", (email,))
             user = cur.fetchone()
-        
+
         # If not, display an error message
         if not user:
             flash('Invalid or expired reset link', 'error')
             return redirect(url_for('forgot_password'))
-        
+
         # Otherwise, update the user's password in your database
         hashed_password = bcrypt.hashpw(new_password.encode(), bcrypt.gensalt())
         with cnx.cursor(dictionary=True) as cur:
             cur.execute("UPDATE clients SET password = %s, reset_token = NULL WHERE client_email = %s", (hashed_password, email))
             cnx.commit()
-        
+
         # Send a confirmation email to the user
         msg = Message('Your password has been reset', sender='hello@oneredbox.ng', recipients=[email])
         msg.body = 'Your password has been successfully reset. If you did not initiate this request, please contact our support team.'
         mail.send(msg)
-        
+
         flash('Your password has been reset. Please log in with your new password.', 'success')
         return redirect(url_for('login'))
-    
+
     return render_template('reset_password.html', token=token)
 
 
@@ -475,14 +476,14 @@ def update_database():
     with cnx.cursor(dictionary=True) as cur:
         cur.execute("SELECT * FROM projects WHERE project_id = %s", (projectId,))
         project = cur.fetchone()
-    
+
     if project:
         if project['amount_paid'] == 0:
             totalAmountPaid = paidAmount
         else:
             totalAmountPaid = project['amount_paid'] + paidAmount
 
-        # Update the confirmed column 
+        # Update the confirmed column
         with cnx.cursor(dictionary=True) as cur:
             cur.execute("UPDATE projects SET amount_paid = %s WHERE project_id = %s", (totalAmountPaid, projectId))
             cnx.commit()
@@ -491,7 +492,7 @@ def update_database():
     else:
         print(f"No project found for project_id {projectId}")
         return "Project not found"
-    
+
 
 @app.route('/update_profile', methods=['POST'])
 def update_profile():
@@ -571,12 +572,3 @@ if __name__ == "__main__":
     app.config['UPLOAD_FOLDER'] = 'static/userpics'
     #app.run(debug=True)
     app.run(host="0.0.0.0", port=3000)
-
-
-'''
-#adding <pagename> edits the route parameter
-@app.route('/<firstname>/<lastname>')
-def userpage(firstname, lastname):
-    pyname = f'{firstname} {lastname}' #using an f string to assign two variables
-    return render_template("userpage.html", name = pyname)
-'''
