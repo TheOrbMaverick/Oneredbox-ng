@@ -29,10 +29,12 @@ paystackApiKey = os.environ['PAYSTACK_API_KEY']
 
 #specified the database here with and stored it in cnx
 config = {
-    'user': 'TheOrbMaverick',
+    #'user': 'TheOrbMaverick',
     'password': dbPass,
-    'host': dbPath,
-    'database': 'TheOrbMaverick$Oneredbox'
+    #'host': dbPath,
+    'host': 'localhost',
+    #'database': 'TheOrbMaverick$Oneredbox'
+    'database': 'Oneredbox'
 }
 
 
@@ -306,7 +308,7 @@ def newproject():
     update_desc = "Project brief created"
     proj_status = 0
 
-    with mysql.connector.connect(user='TheOrbMaverick', password= dbPass, host=dbPath, database='TheOrbMaverick$Oneredbox') as cnx:
+    with mysql.connector.connect( password= dbPass, host='localhost', database='Oneredbox') as cnx:
         # Insert the project
         with cnx.cursor(dictionary=True) as cur:
             cur.execute(query1, (projDesc, totalCost, amountPaid, commercial, tWoBath, twBath, study, kitchen, livrm, bedroom, totalArea, date_added, client_id))
@@ -569,6 +571,6 @@ def logout():
 
 #if the name arugment is same as main run the app
 if __name__ == "__main__":
-    app.config['UPLOAD_FOLDER'] = 'static/userpics'
-    #app.run(debug=True)
-    app.run(host="0.0.0.0", port=3000)
+    #app.config['UPLOAD_FOLDER'] = 'static/userpics'
+    app.run(debug=True)
+    #app.run(host="0.0.0.0", port=3000)
