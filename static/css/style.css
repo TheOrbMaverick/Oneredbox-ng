@@ -119,6 +119,13 @@ section {
     backdrop-filter: blur(5px);
 }
 
+.logoImage {
+    width: 8rem;
+    height: 7.5rem;
+    top: 2%;
+    margin-top: 2rem;
+}
+
 .headingText {
     /* border: 2px solid #d79645; */
     position: absolute;
@@ -128,10 +135,9 @@ section {
     padding-top: 30px;
     z-index: 1;
     left: 4%;
-    top: 25%;
+    top: 27%;
     width: 60rem;
-    font-family: 'Libre Baskerville', serif;
-    font-family: 'Lobster', cursive;
+    font-weight: 500;
 }
 
 .paraText {
@@ -143,7 +149,7 @@ section {
     z-index: 1;
     left: 6%;
     bottom: 45%;
-    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 100;
 }
 
 #loginButton:disabled,
@@ -639,15 +645,13 @@ aside {
         /* border: 2px solid #d79645; */
         position: absolute;
         color: white;
-        font-size: 3rem;
+        font-size: 4rem;
         margin-left: 3rem;
         padding-top: 3rem;
         z-index: 1;
         left: 2%;
         top: 25%;
         width: 40rem;
-        font-family: 'Libre Baskerville', serif;
-        font-family: 'Lobster', cursive;
     }
 
     .paraText {
@@ -659,7 +663,6 @@ aside {
         z-index: 1;
         left: 5%;
         bottom: 45%;
-        font-family: 'Josefin Sans', sans-serif;
     }
     
     .mainBtn {
@@ -733,14 +736,12 @@ aside {
         /* border: 2px solid #d79645; */
         position: absolute;
         color: white;
-        font-size: 2rem;
+        font-size: 4rem;
         margin-left: 8%;
         padding-top: 1rem;
         z-index: 1;
         top: 40%;
         width: 25rem;
-        font-family: 'Libre Baskerville', serif;
-        font-family: 'Lobster', cursive;
         transition: 4s;
     }
 
@@ -753,7 +754,6 @@ aside {
         left: 9%;
         z-index: 1;
         top: 52%;
-        font-family: 'Josefin Sans', sans-serif;
         transition: 4s;
     }
     
@@ -853,14 +853,12 @@ aside {
         /* border: 2px solid #d79645; */
         position: absolute;
         color: white;
-        font-size: 2rem;
+        font-size: 2.5rem;
         margin-left: 8%;
         padding-top: 1rem;
         z-index: 1;
         top: 45%;
         width: 25rem;
-        font-family: 'Libre Baskerville', serif;
-        font-family: 'Lobster', cursive;
         transition: 4s;
     }
 
@@ -873,7 +871,6 @@ aside {
         left: 9%;
         z-index: 1;
         top: 59%;
-        font-family: 'Josefin Sans', sans-serif;
         transition: 4s;
     }
     

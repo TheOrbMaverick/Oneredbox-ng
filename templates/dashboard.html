@@ -51,7 +51,7 @@
             <div id="unique-projects-data" style="display: none;">{{ unique_projects | tojson }}</div>
             {% for project in unique_projects %}
             <br>
-            <h1>{{ project.project_desc }}</h1>
+            <h1 class="projDesc">{{ project.project_desc }}</h1>
             <div class="date">
                 <input type="date" name="created_date" value="{{ project.date_added }}" disabled>
             </div>

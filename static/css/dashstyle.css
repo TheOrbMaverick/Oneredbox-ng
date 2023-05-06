@@ -1089,6 +1089,150 @@ main table {
     cursor: pointer;
 }
 
+@media screen and (max-width: 400px) {
+
+    #paymentForm {
+        height: 16rem;
+        width: 23rem;
+        padding-top: 2rem;
+        border-radius: 1rem;
+        background: var(--color_dark);
+        box-shadow: .5rem .5rem .5rem #040404;
+        z-index: 36;
+        position: fixed;
+        top: 50%;
+        left: 0px;
+        right: 0px;
+        transform: translateY(-50%);
+        margin: auto;
+    }
+
+    #profileForm {
+        display: none;
+        height: 25rem;
+        width: 23rem;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        border-radius: 1rem;
+        background: var(--color_dark);
+        box-shadow: .5rem .5rem .5rem #040404;
+        z-index: 36;
+        top: 50%;
+        left: 0px;
+        right: 0px;
+        transform: translateY(-50%);
+        margin: auto;
+    }
+
+    .projDesc {
+        font-size: 1rem;
+    }
+
+    .box {
+        display: none;
+        position: fixed;
+        margin-top: 1rem;
+        margin-left: 3rem;
+        width: 20rem;
+        height: 35rem;
+        z-index: 50;
+        background: var(--color_dark);
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 1rem 1rem #040404;
+    }
+    
+    .box h3 {
+        color: var(--color-white);
+    }
+    
+    .box::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 25rem;
+        height: 35rem;
+        transform-origin: bottom right;
+        background: linear-gradient(0deg, transparent, #d79645, #d79645);
+        animation: animate 6s linear infinite;
+        animation-delay: -3s;
+    }
+    
+    .box::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 25rem;
+        height: 35rem;
+        transform-origin: bottom right;
+        background: linear-gradient(0deg, transparent, #d79645, #d79645);
+        animation: animate 6s linear infinite;
+    }
+
+    .new-project {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: .8fr .8fr .8fr .8fr;
+        gap: 1rem;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .new-project .space {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        color: var(--color_white);
+    }
+    
+    .new-project .space .title {
+        display: flex;
+        position: absolute;
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 2.5rem;
+        font-size: .8rem;
+    }
+    
+    .new-project .space .counter {
+        display: flex;
+        position: relative;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1rem;
+    }
+
+    .submit-project {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        margin-top: 2rem;
+        margin-left: 6.5rem;
+        color: var(--color-white);
+        background-image: linear-gradient(to left top, #d79645, #dfa04f, #e7aa58, #f0b562, #f8bf6c);
+        border-radius: 1rem;
+        height: 2.5rem;
+        width: 7rem;
+        font-weight: 100;
+        cursor: pointer;
+        transition: all 300ms ease;
+        border: 1px solid white;
+    }
+    
+    .submit-project:hover {
+        scale: 1.1;
+        cursor: pointer;
+        color: var(--color_dark);
+    }
+}
+
   /*********************   LIGHT THEME VARIABLES   *****************************/
 .light-theme-varibles {
     --color-background: linear-gradient(to right bottom, #ffffff, #dadada, #b5b6b6, #929393, #717272);
