@@ -706,8 +706,8 @@ main table {
     margin-top: 2rem;
     border-radius: 4rem;
     height: 2rem;
-    width: 6rem;
-    margin-left: 8rem;
+    width: 10rem;
+    margin-left: 6rem;
     font-weight: 600;
     cursor: pointer;
     transition: .4s;

@@ -243,84 +243,67 @@ function dashboardpage () {
 
     addFunds.forEach((fund, index) => {
         var uniqueProjects = JSON.parse(document.getElementById("unique-projects-data").innerHTML);
-    
+      
         fund.addEventListener('click', () => {
-            var projectId = uniqueProjects[index]['project_id'];
-            console.log(projectId);
-    
-            // Show the dialog box
-            payAlertBox.style.display = 'block';
-    
-            //backdrop
-            backdrop.style.display = 'block';
-    
-            fetch('/get_current_user')
+          var projectId = uniqueProjects[index]['project_id'];
+          var projectDesc = uniqueProjects[index]['project_desc'];
+          console.log(projectId);
+      
+          // Show the dialog box
+          payAlertBox.style.display = 'block';
+      
+          //backdrop
+          backdrop.style.display = 'block';
+      
+          fetch('/get_current_user')
             .then(response => response.json())
             .then(user => {
-                const pay = document.getElementById('payButton');
-                var payInput = document.getElementById('payamount');
-    
-                payInput.addEventListener('input', function() {
-                    var value = this.value;
-                    var formattedValue = value.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                    this.value = formattedValue;
-                    var payValue = parseInt(payInput.value.replace(/\D/g, ""));
-                    pay.addEventListener('click', payWithPaystack);
-
-                    
-
-                    //paystack payments
-                    function payWithPaystack(event) {
-                        event.preventDefault();
-
-                        // Close pay dialogue and backdrop
-                        payAlertBox.style.display = "none";
-                        backdrop.style.display = "none";
-
-                        let handler = PaystackPop.setup({
-                            
-                            key: paystackApiKey, // Replace with your public key
-                            email: user.email,
-                            amount: payValue * 100,
-                            ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
-                            // label: "Optional string that replaces customer email"
-                            onClose: function(){
-                            alert('Window closed.');
-                            },
-                            callback: function(response){
-                                let message = 'Payment complete! Reference: ' + response.reference;
-                                alert(message);
-        
-                                // Update the database with the payment amount and project ID
-                                fetch('/update_database', {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/json'
-                                    },
-                                    body: JSON.stringify({
-                                        jsonProjectId: projectId,
-                                        paymentAmount: payValue
-                                    })
-                                })
-                                .then(response => {
-                                    // Handle response from server
-                                    window.location.reload()
-                                    console.log(response)
-                                })
-                                .catch(error => {
-                                    // Handle error
-                                    console.log(error)
-                                });
-                            }
-                        });
-                        handler.openIframe();
+              const pay = document.getElementById('payButton');
+              var payInput = document.getElementById('payamount');
+      
+              payInput.addEventListener('input', function() {
+                var value = this.value;
+                var formattedValue = value.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                this.value = formattedValue;
+              });
+              
+              // move the pay event listener and generateInvoice function outside the input listener
+              pay.addEventListener('click', generateInvoice);
+      
+              function generateInvoice(event) {
+                // Close pay dialogue and backdrop
+                payAlertBox.style.display = "none";
+                backdrop.style.display = "none";
+                event.preventDefault();
+      
+                //get the final amount
+                var payValue = payInput.value;
+      
+                // Create a new FormData object
+                const formData = new FormData();
+      
+                // Append data to the form data object
+                formData.append('email', user.email);
+                formData.append('amount', payValue);
+                formData.append('project_id', projectId);
+                formData.append('project_desc', projectDesc);
+      
+                // Send the form data to the server
+                fetch('/generate_invoice', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then((response) => {
+                    if (response.ok) {
+                        // Show a success message to the user
+                        alert("An email has been sent to you with the invoice.");
                     }
                 });
-                
+              }
             });
-        })
-    
-    })
+        });
+      
+      });
     
 }
 

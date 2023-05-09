@@ -4,11 +4,16 @@ from flask import Flask, render_template, url_for, request, redirect
 
 # installed mysql-connector-python using pip to be able to access this so I do not need to import the mysql using flask again
 import mysql.connector
+
 from flask_login import LoginManager, UserMixin, login_user, login_required, current_user
 from flask_mail import Mail, Message
-from flask import jsonify, flash, session
+from flask import jsonify, flash, session, make_response
 from PIL import Image
 from dotenv import load_dotenv
+from reportlab.lib.pagesizes import letter
+from reportlab.pdfgen import canvas
+from reportlab.lib.utils import ImageReader
+from reportlab.lib.units import inch
 
 import re
 import os
@@ -29,10 +34,13 @@ paystackApiKey = os.environ['PAYSTACK_API_KEY']
 
 #specified the database here with and stored it in cnx
 config = {
-    'user': 'TheOrbMaverick',
+    #'user': 'TheOrbMaverick',
+    'user': 'root',
     'password': dbPass,
-    'host': dbPath,
-    'database': 'TheOrbMaverick$Oneredbox'
+    #'host': dbPath,
+    'host': 'localhost',
+    #'database': 'TheOrbMaverick$Oneredbox'
+    'database': 'Oneredbox'
 }
 
 
@@ -45,8 +53,7 @@ app.config['MAIL_USERNAME'] = 'hello@oneredbox.ng'
 app.config['MAIL_PASSWORD'] = mailPass
 app.secret_key = secretK
 
-app.config['UPLOAD_FOLDER'] = 'Oneredbox-ng/static/userpics'
-#app.config['UPLOAD_FOLDER'] = '/static/userpics'
+app.config['UPLOAD_FOLDER'] = 'static/userpics'
 
 mail = Mail(app)
 
@@ -214,17 +221,12 @@ def dashboard():
         picpath_dict = cur.fetchone()
 
     user_photo = picpath_dict['client_pic_path']
+    print(f"user_photo: {user_photo}")
 
     if user_photo is not None:
-        profilepic = user_photo.replace("Oneredbox-ng/static/", "")
+        profilepic = user_photo.replace("static/", "")
     else:
         profilepic = "images/white_circle.png"
-
-    # check if connection is open
-    # if cnx.is_connected():
-    #     print('Connection is open 4')
-    # else:
-    #     print('Connection is closed 4')
 
     #write code to bring up an alert box if the project is empty.
     return render_template("dashboard.html", unique_projects=unique_projects, name=name, profilepic = profilepic, paystackApiKey = paystackApiKey)
@@ -306,7 +308,7 @@ def newproject():
     update_desc = "Project brief created"
     proj_status = 0
 
-    with mysql.connector.connect(user='TheOrbMaverick', password= dbPass, host=dbPath, database='TheOrbMaverick$Oneredbox') as cnx:
+    with mysql.connector.connect(user='root', password= dbPass, host='localhost', database='Oneredbox') as cnx:
         # Insert the project
         with cnx.cursor(dictionary=True) as cur:
             cur.execute(query1, (projDesc, totalCost, amountPaid, commercial, tWoBath, twBath, study, kitchen, livrm, bedroom, totalArea, date_added, client_id))
@@ -321,7 +323,7 @@ def newproject():
     # Send a confirmation email to the user
     msg = Message('Your new project', sender='hello@oneredbox.ng', recipients=[email])
     msg.body = f'''
-                Hello {current_user.name}!,
+                Hello {current_user.name}!
 
                 We are excited that you have created a new project.
 
@@ -359,8 +361,8 @@ def calculateArea(spaces):
 
 def calculateCost(area):
     naira = area * 310000
-    # cost = round(naira / 720)
-    return naira
+    cost = round(naira / 460)
+    return cost
 
 @app.route('/confirm_email')
 def confirm_email():
@@ -555,6 +557,98 @@ def update_profile():
     else:
         # Neither phone number nor profile picture provided
         return jsonify({"message": "No update provided"})
+    
+@app.route('/generate_invoice', methods=['POST'])
+def generate_invoice():
+    name = current_user.name
+    email = request.form['email']
+    amount = request.form['amount']
+    project = request.form['project_id']
+    projectDesc = request.form['project_desc']
+
+    # Create canvas and set page size
+    c = canvas.Canvas(f"Oneredbox project {project} invoice.pdf", pagesize=letter)
+
+    # Load logo image and draw on canvas
+    logo = ImageReader('static/images/Oneredbox_BLACK.PNG')
+    c.drawImage(logo, 1*inch, 9.5*inch, width=1*inch, height=0.9*inch, mask='auto')
+
+    # Set font and text size for company address and account info
+    c.setFont("Helvetica-Bold", 14)
+    # Draw company address
+    c.drawString(1*inch, 9*inch, "Company Address:")
+    c.setFont("Helvetica", 12)
+    c.drawString(1*inch, 8.75*inch, "The Node project,")
+    c.drawString(1*inch, 8.5*inch, "Mabushi, Abuja.")
+
+    # Set font and text size for title
+    c.setFont("Helvetica-Bold", 20)
+    # Draw title and project ID
+    c.drawString(2.5*inch, 8*inch, "Invoice for Your Project")
+
+    #Project ID
+    c.setFont("Helvetica-Bold", 14)
+    c.drawString(1*inch, 7.75*inch, f"Project ID: {project}")
+
+    # Draw wide horizontal line
+    c.setStrokeColorRGB(0.8, 0.2, 0.2)
+    c.setLineWidth(4)
+    c.line(1*inch, 7.6*inch, 7.5*inch, 7.5*inch)
+
+    # Draw invoice details
+    c.setFont("Helvetica-Bold", 14)
+    c.drawString(1*inch, 7.25*inch, "Invoice Details:")
+    c.setFont("Helvetica", 12)
+    c.drawString(1*inch, 7*inch, f"Name: {name}")
+    c.drawString(1*inch, 6.75*inch, f"Email: {email}")
+    c.drawString(1*inch, 6.5*inch, f"Amount Due: ${amount}")
+    c.drawString(1*inch, 6.25*inch, f"Project Description:")
+    c.drawString(1.2*inch, 6*inch, projectDesc)
+
+    # Draw wide horizontal line
+    c.setStrokeColorRGB(0.8, 0.2, 0.2)
+    c.setLineWidth(4)
+    c.line(1*inch, 5.75*inch, 7.5*inch, 5.75*inch)
+
+    # Draw account info
+    c.setFont("Helvetica-Bold", 14)
+    c.drawString(1*inch, 5.5*inch, "Account Information:")
+    c.setFont("Helvetica", 12)
+    c.drawString(1*inch, 5.25*inch, "Currency: USD")
+    c.drawString(1*inch, 5*inch, "Company Account Number: 1234567890")
+    c.drawString(1*inch, 4.75*inch, "Company Account Name: Oneredbox Properties")
+
+    # Save canvas and return the generated file
+    c.save()
+
+    # Send PDF as email attachment
+    with app.open_resource(f"Oneredbox project {project} invoice.pdf") as pdf:
+        msg = Message("Your Project Invoice", sender='hello@oneredbox.ng', recipients=[email])
+        msg.body = f'''
+                Hello {current_user.name}!
+
+                You have just requested an invoice to begin your project
+
+                Attached to this mail, is an invoice containing the amount you want to pay 
+                and the company account details.
+
+                Please reply to this email with your recept when you have made the payment and
+                we will be in touch with you to begin your project.
+
+                Please reply to this email if you have any further questions.
+
+                Customer service,
+                Oneredbox.ng
+                '''
+
+        msg.body = re.sub(r'^( {4})+', '', msg.body, flags=re.MULTILINE)
+        msg.attach(f"Oneredbox project {project} invoice.pdf", "application/pdf", pdf.read())
+        mail.send(msg)
+
+        os.remove(f"Oneredbox project {project} invoice.pdf")
+
+    flash('PDF generated and sent successfully', 'success')
+    return "PDF generated and sent successfully"
 
 
 @app.route('/logout', methods=['GET', 'POST'])
@@ -569,6 +663,5 @@ def logout():
 
 #if the name arugment is same as main run the app
 if __name__ == "__main__":
-    app.config['UPLOAD_FOLDER'] = 'static/userpics'
-    #app.run(debug=True)
-    app.run(host="0.0.0.0", port=3000)
+    app.run(debug=True)
+    #app.run(host="0.0.0.0", port=3000)
