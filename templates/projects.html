@@ -1,62 +1,126 @@
-{% extends 'base.html'%}
-
-{% block title %}
-<title>Oneredbox.ng - Our Projects</title>
-{% endblock %}
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oneredbox.ng - Our Projects</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@1&family=Lobster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100&family=Libre+Baskerville:ital@1&family=Lobster&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/bootstrap.css') }}"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/projectstyle.css') }}"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/jquery.flipster.min.css') }}">
+</head>
 <body id="projectpage">
-    {% block content %}
-        <section>
-            <div class="img-slider">
-                <div class="slide active">
-                    <img class = "imageGallery" src="{{url_for('static', filename = '/images/Living_room_stairs.jpg')}}" alt="">
-                    <div class = "info">
-                        <h2>Featured Construction project</h2>
-                        <p>
-                            Floating staircase design for one of our clients in a residential building.
-                            Showcasing construction prowess and out of the box design.
-                        </p>
-                    </div>
-                </div>
-                <div class="slide">
-                    <img class = "imageGallery" src="{{url_for('static', filename = '/images/Exterior_cantilever.jpg')}}" alt="">
-                    <div class = "info">
-                        <h2>Featured Construction project</h2>
-                        <p>
-                            Structurally sound exterior showing almost 3meter cantilever.
-                            Displaying the art of balance and imagination in construction projects
-                        </p>
-                    </div>
-                </div>
-                <div class="slide">
-                    <img class = "imageGallery" src="{{url_for('static', filename = '/images/Kitchen_cabinets.jpg')}}" alt="">
-                    <div class="info">
-                        <h2>Featured Construction project</h2>
-                        <p>
-                            High quality kitchen cabinet finishes. Lined up to inch perfection.
-                            Showcasing our attention to detail and ability to produce quality.
-                        </p>
-                    </div>
-                </div>
-                <div class="slide">
-                    <img class = "imageGallery" src="{{url_for('static', filename = '/images/A_bedroom.jpg')}}" alt="">
-                    <div class="info">
-                        <h2>Featured Construction project</h2>
-                        <p>
-                            One of the bedrooms showing high quality tiles, doors and window set up.
-                            Showcasing our ability to provide quality to our clients.
-
-                        </p>
-                    </div>
-                </div>
-                <div class = "navigation">
-                    <div class = "btn active"></div>
-                    <div class = "btn"></div>
-                    <div class = "btn"></div>
-                    <div class = "btn"></div>
-                </div>
+    <nav class="topNav">
+        <a href="{{url_for('index')}}"><img src="../static/images/Oneredbox-white.png" alt="" class="plogoImage"></a>
+        <ul>
+            <li><a href="{{url_for('projects') }}#designs">Designs</a></li>
+            <li><a href="{{url_for('projects') }}#construction">Construction</a></li>
+            <li><a href="{{url_for('projects') }}#interiors">Interiors</a></li>
+            <li><a href="{{url_for('projects') }}#renovations">Renovations</a></li>
+        </ul>
+        <a href="{{url_for('login') }}">Login</a>
+    </nav>
+    <div class="container">
+        <div class="hero" id="designs">
+            <div class="carousel">
+                <ul>
+                    <li>
+                        <img src="{{url_for('static', filename = '/images/designs/1.jpg')}}" alt="">
+                        <p class="imgDesc">Design of a living room</p>
+                    </li>
+                    <li><img src="{{url_for('static', filename = '/images/designs/2.jpg')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/designs/3.jpg')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/designs/4.jpg')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/designs/5.jpg')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/designs/6.jpg')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/designs/7.PNG')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/designs/8.jpg')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/designs/9.jpg')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/designs/10.jpg')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/designs/11.jpg')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/designs/12.jpg')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/designs/13.jpg')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/designs/14.jpg')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/designs/15.jpg')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/designs/16.JPG')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/designs/17.jpg')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/designs/18.PNG')}}" alt=""></li>
+                </ul>
             </div>
-        </section>
-    {% endblock %}
+        </div>
+        <div class="hero" id="construction">
+            <div class="carousel">
+                <ul>
+                    <li>
+                        <img src="{{url_for('static', filename = '/images/construction/2.jpeg')}}" alt="">
+                        <p class="imgDesc">Foundation works</p>
+                    </li>
+                    <li><img src="{{url_for('static', filename = '/images/construction/3.jpeg')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/construction/4.jpeg')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/construction/5.jpeg')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/construction/6.jpeg')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/construction/7.jpeg')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/construction/8.jpeg')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/construction/9.jpeg')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/construction/10.jpeg')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/construction/11.jpeg')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/construction/12.jpeg')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/construction/13.jpeg')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/construction/14.jpeg')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/construction/15.jpeg')}}" alt=""></li>
+                </ul>
+            </div>
+        </div>
+        <div class="hero" id="interiors">
+            <div class="carousel">
+                <ul>
+                    <li>
+                        <img src="{{url_for('static', filename = '/images/interiors/1.jpeg')}}" alt="">
+                        <p class="imgDesc">Living room interior design</p>
+                    </li>
+                    <li><img src="{{url_for('static', filename = '/images/interiors/2.jpeg')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/interiors/3.jpeg')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/interiors/4.jpeg')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/interiors/5.jpeg')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/interiors/6.jpeg')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/interiors/7.jpeg')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/interiors/8.jpeg')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/interiors/9.jpeg')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/interiors/10.jpeg')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/interiors/11.jpeg')}}" alt=""></li>
+                    <li><img src="{{url_for('static', filename = '/images/interiors/12.jpeg')}}" alt=""></li>
+                </ul>
+            </div>
+        </div>
+        <div class="hero" id="renovations">
+            <div class="carousel">
+                <ul>
+                    <li>
+                        <img src="{{url_for('static', filename = '/images/renovations/1.jpeg')}}" alt="">
+                        <p class="imgDesc">Before</p>
+                    </li>
+                    <li><img src="{{url_for('static', filename = '/images/renovations/2.jpeg')}}" alt=""></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="{{ url_for('static', filename = 'js/jquery.flipster.min.js') }}"></script>
+    <script>
+        $('.carousel').flipster({
+            style: 'carousel',
+            spacing: -0.5,
+            start: 0,
+            scrollwheel: false,
+            loop: true
+        });
+    </script>
 </body>
 </html>

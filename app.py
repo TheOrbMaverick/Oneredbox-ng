@@ -7,7 +7,7 @@ import mysql.connector
 
 from flask_login import LoginManager, UserMixin, login_user, login_required, current_user
 from flask_mail import Mail, Message
-from flask import jsonify, flash, session, make_response
+from flask import jsonify, flash, session
 from PIL import Image
 from dotenv import load_dotenv
 from reportlab.lib.pagesizes import letter
@@ -34,10 +34,14 @@ paystackApiKey = os.environ['PAYSTACK_API_KEY']
 
 #specified the database here with and stored it in cnx
 config = {
-    'user': 'TheOrbMaverick',
+    # 'user': 'TheOrbMaverick',
+    # 'password': dbPass,
+    # 'host': dbPath,
+    # 'database': 'TheOrbMaverick$Oneredbox'
+    'user': 'root',
     'password': dbPass,
-    'host': dbPath,
-    'database': 'TheOrbMaverick$Oneredbox'
+    'host': 'localhost',
+    'database': 'Oneredbox'
 }
 
 
@@ -221,7 +225,8 @@ def dashboard():
     print(f"user_photo: {user_photo}")
 
     if user_photo is not None:
-        profilepic = user_photo.replace("static/", "")
+        firstpath = user_photo.replace("static/userpics/","")
+        profilepic = firstpath.replace("Oneredbox-ng/","userpics/")
     else:
         profilepic = "images/white_circle.png"
 
@@ -305,7 +310,7 @@ def newproject():
     update_desc = "Project brief created"
     proj_status = 0
 
-    with mysql.connector.connect(user='TheOrbMaverick', password= dbPass, host=dbPath, database='TheOrbMaverick$Oneredbox') as cnx:
+    with mysql.connector.connect(user='root', password= dbPass, host='localhost', database='Oneredbox') as cnx:
         # Insert the project
         with cnx.cursor(dictionary=True) as cur:
             cur.execute(query1, (projDesc, totalCost, amountPaid, commercial, tWoBath, twBath, study, kitchen, livrm, bedroom, totalArea, date_added, client_id))
@@ -363,7 +368,9 @@ def calculateCost(area):
 
 @app.route('/confirm_email')
 def confirm_email():
-
+    
+    cnx.reconnect()
+    
     # Retrieve the email and confirmation code from the URL parameters
     email = request.args.get('email')
     code = request.args.get('code')
@@ -554,7 +561,7 @@ def update_profile():
     else:
         # Neither phone number nor profile picture provided
         return jsonify({"message": "No update provided"})
-    
+
 @app.route('/generate_invoice', methods=['POST'])
 def generate_invoice():
     name = current_user.name
@@ -567,7 +574,7 @@ def generate_invoice():
     c = canvas.Canvas(f"Oneredbox project {project} invoice.pdf", pagesize=letter)
 
     # Load logo image and draw on canvas
-    logo = ImageReader('static/images/Oneredbox_BLACK.PNG')
+    logo = ImageReader('Oneredbox-ng/static/images/Oneredbox_BLACK.PNG')
     c.drawImage(logo, 1*inch, 9.5*inch, width=1*inch, height=0.9*inch, mask='auto')
 
     # Set font and text size for company address and account info
@@ -590,7 +597,7 @@ def generate_invoice():
     # Draw wide horizontal line
     c.setStrokeColorRGB(0.8, 0.2, 0.2)
     c.setLineWidth(4)
-    c.line(1*inch, 7.6*inch, 7.5*inch, 7.5*inch)
+    c.line(1*inch, 7.5*inch, 7.5*inch, 7.5*inch)
 
     # Draw invoice details
     c.setFont("Helvetica-Bold", 14)
@@ -599,7 +606,7 @@ def generate_invoice():
     c.drawString(1*inch, 7*inch, f"Name: {name}")
     c.drawString(1*inch, 6.75*inch, f"Email: {email}")
     c.drawString(1*inch, 6.5*inch, f"Amount Due: ${amount}")
-    c.drawString(1*inch, 6.25*inch, f"Project Description:")
+    c.drawString(1*inch, 6.25*inch, "Project Description:")
     c.drawString(1.2*inch, 6*inch, projectDesc)
 
     # Draw wide horizontal line
@@ -619,14 +626,14 @@ def generate_invoice():
     c.save()
 
     # Send PDF as email attachment
-    with app.open_resource(f"Oneredbox project {project} invoice.pdf") as pdf:
+    with open(f"Oneredbox project {project} invoice.pdf", "rb") as pdf:
         msg = Message("Your Project Invoice", sender='hello@oneredbox.ng', recipients=[email])
         msg.body = f'''
                 Hello {current_user.name}!
 
                 You have just requested an invoice to begin your project
 
-                Attached to this mail, is an invoice containing the amount you want to pay 
+                Attached to this mail, is an invoice containing the amount you want to pay
                 and the company account details.
 
                 Please reply to this email with your recept when you have made the payment and
@@ -644,7 +651,6 @@ def generate_invoice():
 
         os.remove(f"Oneredbox project {project} invoice.pdf")
 
-    flash('PDF generated and sent successfully', 'success')
     return "PDF generated and sent successfully"
 
 
@@ -661,4 +667,4 @@ def logout():
 #if the name arugment is same as main run the app
 if __name__ == "__main__":
     app.run(debug=True)
-    #app.run(host="0.0.0.0", port=3000)
+#     app.run(host="0.0.0.0", port=3000)
