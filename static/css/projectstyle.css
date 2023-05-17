@@ -84,6 +84,13 @@ h1 {
     -webkit-box-reflect: below 10px linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3));
 }
 
+@media screen and (max-width: 475px) {
+    .carousel img {
+        max-width: auto;
+        max-height: 300px;
+    }
+}
+
 
 /* html, 
 #projectpage {
