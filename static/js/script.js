@@ -7,8 +7,6 @@ window.addEventListener('load', () => {
 
     if(document.title === "Oneredbox - Sign up"){
         signuppage();
-    }else if(document.title === "Oneredbox - Your construction company"){
-        homepage();
     }else if(document.title === "Oneredbox - Your Dashboard") {
         dashboardpage();
     }else if (document.title === "Oneredbox - Login to your account"){
@@ -430,19 +428,6 @@ function signuppage() {
         confirmPassword.addEventListener("input", confirmPass)
     }
 
-}
-
-
-function homepage(){
-    const projectPgBtn = document.querySelector("#goToProjects");
-
-    if (projectPgBtn) {
-        projectPgBtn.addEventListener('click', () => {
-            window.location.href = '/projects';
-        })
-    }
-
-    goToSignup();
 }
 
 function loginpage (){
