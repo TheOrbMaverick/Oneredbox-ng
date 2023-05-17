@@ -4,8 +4,20 @@
     font-family: 'Open Sans', sans-serif;
 }
 
-h1 {
+h3 {
     color: white;
+}
+
+.headings {
+    display: none;
+}
+
+.sectionNames {
+    display: none;
+}
+
+.sectionArrow {
+    display: none;
 }
 
 #projectpage {
@@ -87,7 +99,43 @@ h1 {
 @media screen and (max-width: 475px) {
     .carousel img {
         max-width: auto;
-        max-height: 300px;
+        max-height: 350px;
+        min-height: 300px;
+    }
+
+    .topNav ul {
+        display: none;
+    }
+
+    .sectionNames {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20rem;
+    }
+
+    .sectionArrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .sectionArrow img{
+        max-width: 4rem;
+        max-height: 4rem;
+    }
+
+    .headings {
+        color: #d79645;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bolder;
+        margin-top: 5rem;
+        margin-left: 15rem;
+        z-index: 40;
     }
 }
 

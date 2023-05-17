@@ -29,11 +29,9 @@
     <div class="container">
         <div class="hero" id="designs">
             <div class="carousel">
+                <div class="headings">DESIGNS</div>
                 <ul>
-                    <li>
-                        <img src="{{url_for('static', filename = '/images/designs/1.jpg')}}" alt="">
-                        <p class="imgDesc">Design of a living room</p>
-                    </li>
+                    <li><img src="{{url_for('static', filename = '/images/designs/1.jpg')}}" alt=""></li>
                     <li><img src="{{url_for('static', filename = '/images/designs/2.jpg')}}" alt=""></li>
                     <li><img src="{{url_for('static', filename = '/images/designs/3.jpg')}}" alt=""></li>
                     <li><img src="{{url_for('static', filename = '/images/designs/4.jpg')}}" alt=""></li>
@@ -53,14 +51,14 @@
                     <li><img src="{{url_for('static', filename = '/images/designs/18.PNG')}}" alt=""></li>
                 </ul>
             </div>
+            <div class="sectionNames"><a href="{{url_for('projects')}}#construction">Construction Works Below</a></div>
+            <div class="sectionArrow"><a href="{{url_for('projects')}}#construction"><img src="{{url_for('static', filename = '/images/downarrow2.png')}}" alt=""></a></div>
         </div>
         <div class="hero" id="construction">
             <div class="carousel">
+                <div class="headings">CONSTRUCTION</div>
                 <ul>
-                    <li>
-                        <img src="{{url_for('static', filename = '/images/construction/2.jpeg')}}" alt="">
-                        <p class="imgDesc">Foundation works</p>
-                    </li>
+                    <li><img src="{{url_for('static', filename = '/images/construction/2.jpeg')}}" alt=""></li>
                     <li><img src="{{url_for('static', filename = '/images/construction/3.jpeg')}}" alt=""></li>
                     <li><img src="{{url_for('static', filename = '/images/construction/4.jpeg')}}" alt=""></li>
                     <li><img src="{{url_for('static', filename = '/images/construction/5.jpeg')}}" alt=""></li>
@@ -76,9 +74,12 @@
                     <li><img src="{{url_for('static', filename = '/images/construction/15.jpeg')}}" alt=""></li>
                 </ul>
             </div>
+            <div class="sectionNames"><a href="{{url_for('projects')}}#interiors">Interior Works Below</a></div>
+            <div class="sectionArrow"><a href="{{url_for('projects')}}#interiors"><img src="{{url_for('static', filename = '/images/downarrow2.png')}}" alt=""></a></div>
         </div>
         <div class="hero" id="interiors">
             <div class="carousel">
+                <div class="headings">INTERIORS</div>
                 <ul>
                     <li>
                         <img src="{{url_for('static', filename = '/images/interiors/1.jpeg')}}" alt="">
@@ -97,9 +98,12 @@
                     <li><img src="{{url_for('static', filename = '/images/interiors/12.jpeg')}}" alt=""></li>
                 </ul>
             </div>
+            <div class="sectionNames"><a href="{{url_for('projects')}}#renovations">Renovation Works Below</a></div>
+            <div class="sectionArrow"><a href="{{url_for('projects')}}#renovations"><img src="{{url_for('static', filename = '/images/downarrow2.png')}}" alt=""></a></div>
         </div>
         <div class="hero" id="renovations">
             <div class="carousel">
+                <div class="headings">RENOVATIONS</div>
                 <ul>
                     <li>
                         <img src="{{url_for('static', filename = '/images/renovations/1.jpeg')}}" alt="">
