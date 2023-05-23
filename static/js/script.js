@@ -9,6 +9,8 @@ window.addEventListener('load', () => {
         signuppage();
     }else if(document.title === "Oneredbox - Your Dashboard") {
         dashboardpage();
+    }else if(document.title === "Oneredbox - Reset Password") {
+        signuppage();
     }else if (document.title === "Oneredbox - Login to your account"){
         loginpage();
     }else if (document.title === "Oneredbox - Get Free Quote"){
@@ -360,6 +362,7 @@ function freeQuotePage() {
     });
 
 }
+
 
 function signuppage() {
     const loginBtn = document.querySelector("#login");

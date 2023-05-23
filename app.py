@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, datetime, timedelta
 from flask import Flask, render_template, url_for, request, redirect
 #from flask_mysqldb import MySQL
 
@@ -118,7 +118,7 @@ def login():
                     cnx.commit()
 
                 confirm_link = url_for('confirm_email', email=email, code=confirmation_code, _external=True)
-                msg = Message('Please Confirm Your Email', sender='hello@oneredbox.ng', recipients=[email])
+                msg = Message('Please Confirm Your Email', sender=('Oneredbox.ng', 'hello@oneredbox.ng'), recipients=[email])
                 msg.body = f'Thank you for registering! Please confirm your email address by clicking on the following link: {confirm_link}'
                 with app.app_context():
                     mail.connect()
@@ -126,7 +126,7 @@ def login():
                 return 'Please confirm your e-mail, an email has been sent!'
 
         else:
-            print ("no user")
+            flash("Wrong email or password")
 
 
     return render_template("login.html")
@@ -165,7 +165,7 @@ def signup():
 
         # Send a confirmation email to the user
         confirm_link = url_for('confirm_email', email=email, code=confirmation_code, _external=True)
-        msg = Message('Please Confirm Your Email', sender='hello@oneredbox.ng', recipients=[email])
+        msg = Message('Please Confirm Your Email', sender=('Oneredbox.ng', 'hello@oneredbox.ng'), recipients=[email])
         msg.body = f'Thank you for registering! Please confirm your email address by clicking on the following link: {confirm_link}'
         mail.send(msg)
 
@@ -319,7 +319,7 @@ def newproject():
         cnx.commit()
 
     # Send a confirmation email to the user
-    msg = Message('Your new project', sender='hello@oneredbox.ng', recipients=[email])
+    msg = Message('Your new project', sender=('Oneredbox.ng', 'hello@oneredbox.ng'), recipients=[email])
     msg.body = f'''
                 Hello {current_user.name}!
 
@@ -392,7 +392,8 @@ def confirm_email():
 def generate_token(email, length=30):
     chars = string.ascii_letters + string.digits
     random_string = ''.join(random.choice(chars) for i in range(length))
-    return f'{email}-{random_string}'
+    expiration_time = datetime.now() + timedelta(hours = 24)
+    return f'{email}-{random_string}-{expiration_time.timestamp()}'
 
 
 # Route for the forgot password form
@@ -413,19 +414,35 @@ def forgot_password():
             return redirect(url_for('login'))
         else:
             email = user['client_email']
+
             # Otherwise, generate a unique token and store it in your database, associated with the user's account
             token = generate_token(email)
+
+            # Create the reset URL with the token and expiration timestamp
             # Send an email to the user with a link to the password reset page, along with the token in the URL parameters
             # Send a confirmation email to the user
             reset_url = url_for('reset_password', token=token, _external=True)
-            msg = Message('Reset Your Password', sender='hello@oneredbox.ng', recipients=[email])
-            msg.body = f'You requested to reset your password, please ignore this mail if it was not you. Otherwhise please click this link to reset your password: {reset_url}'
+
+            msg = Message('Reset Your Password', sender=('Oneredbox.ng', 'hello@oneredbox.ng'), recipients=[email])
+            msg.body = f'''
+                        You requested to reset your password, please ignore this mail if it was not you.
+
+                        Otherwhise please click the link below to reset your password. 
+                        
+                        {reset_url}
+
+                        Please note that this reset link will expire in 24hours
+
+                        Tech support,
+                        Oneredbox.ng
+                        '''
+            msg.body = re.sub(r'^( {4})+', '', msg.body, flags=re.MULTILINE)
             mail.send(msg)
 
             flash("A reset link has been sent to your email")
 
             cur.close()
-            return redirect(url_for('projects'))
+            return redirect(url_for('index'))
             # Redirect the user to a confirmation page
 
         # send email with the reset_url to the user
@@ -435,36 +452,55 @@ def forgot_password():
 # Route for the password reset form
 @app.route('/reset-password/<token>', methods=['GET', 'POST'])
 def reset_password(token):
+    # Split the token into email and random string components
+    email, random_string, expiration_time = token.split('-')
+
+    # Get the expiration timestamp from the token
+    expires = float(expiration_time)
+
+    # Convert the expiration timestamp to a datetime object
+    expiration_time = datetime.fromtimestamp(expires)
+
+    # Compare the expiration time with the current time
+    if datetime.now() > expiration_time:
+        # Link has expired
+        flash("The reset link has expired. Please request a new one.")
+        return redirect(url_for('login'))
+
     if request.method == 'POST':
         # Get the new password from the form
         new_password = request.form['new_password']
-        # Split the token into email and random string components
-        email, random_string = token.split('-')
-
 
         # Check if the token is valid and associated with an account
         with cnx.cursor(dictionary=True) as cur:
-            cur.execute("SELECT * FROM clients WHERE client_email= %s", (email,))
+            cur.execute("SELECT * FROM clients WHERE client_email = %s", (email,))
             user = cur.fetchone()
 
-        # If not, display an error message
         if not user:
             flash('Invalid or expired reset link', 'error')
-            return redirect(url_for('forgot_password'))
+            return redirect(url_for('login'))
+        else:
+            # Otherwise, update the user's password in your database
+            hashed_password = bcrypt.hashpw(new_password.encode(), bcrypt.gensalt())
+            with cnx.cursor(dictionary=True) as cur:
+                cur.execute("UPDATE clients SET password = %s, reset_token = NULL WHERE client_email = %s", (hashed_password, email))
+                cnx.commit()
 
-        # Otherwise, update the user's password in your database
-        hashed_password = bcrypt.hashpw(new_password.encode(), bcrypt.gensalt())
-        with cnx.cursor(dictionary=True) as cur:
-            cur.execute("UPDATE clients SET password = %s, reset_token = NULL WHERE client_email = %s", (hashed_password, email))
-            cnx.commit()
+            # Send a confirmation email to the user
+            msg = Message('Your password has been reset', sender=('Oneredbox.ng', 'hello@oneredbox.ng'), recipients=[email])
+            msg.body = '''
+                        Your password has been successfully reset. 
+                        
+                        If you did not initiate this request, please contact our support team by replying this mail.
 
-        # Send a confirmation email to the user
-        msg = Message('Your password has been reset', sender='hello@oneredbox.ng', recipients=[email])
-        msg.body = 'Your password has been successfully reset. If you did not initiate this request, please contact our support team.'
-        mail.send(msg)
+                        Tech support,
+                        Oneredbox.ng
+                        '''
+            msg.body = re.sub(r'^( {4})+', '', msg.body, flags=re.MULTILINE)
+            mail.send(msg)
 
-        flash('Your password has been reset. Please log in with your new password.', 'success')
-        return redirect(url_for('login'))
+            flash('Your password has been reset. Please log in with your new password.', 'success')
+            return redirect(url_for('login'))
 
     return render_template('reset_password.html', token=token)
 
@@ -623,7 +659,7 @@ def generate_invoice():
 
     # Send PDF as email attachment
     with open(f"Oneredbox project {project} invoice.pdf", "rb") as pdf:
-        msg = Message("Your Project Invoice", sender='hello@oneredbox.ng', recipients=[email])
+        msg = Message("Your Project Invoice", sender=('Oneredbox.ng', 'hello@oneredbox.ng'), recipients=[email])
         msg.body = f'''
                 Hello {current_user.name}!
 
