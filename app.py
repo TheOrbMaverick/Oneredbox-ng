@@ -400,6 +400,9 @@ def generate_token(email, length=30):
 @app.route('/forgot-password', methods=['GET', 'POST'])
 def forgot_password():
     if request.method == 'POST':
+
+        cnx.reconnect()
+        
         # Get the user's email or username from the form
         forgottenM = request.form['forgot_mail']
 
