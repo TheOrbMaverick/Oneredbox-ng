@@ -95,36 +95,37 @@ def login():
         password = request.form['inputPass']
         encodedPass = password.encode()
 
-
         id_query = "SELECT * FROM clients WHERE client_email = %s"
         with cnx.cursor(dictionary=True) as cur:
             cur.execute(id_query, (inputemail, ))
             user = cur.fetchone()
-        name = user['first_name']
 
-        hashedPassword = user['password'].encode()
+        if user is not None:
+            name = user['first_name']
+            hashedPassword = user['password'].encode()
 
-        if user is not None and bcrypt.checkpw(encodedPass, hashedPassword) and inputemail == user['client_email']:
-            id = user['client_id']
-            login_user(User(id, inputemail, name))
-            if user['confirmed'] == 1:
-                return redirect(url_for('dashboard'))
+            if bcrypt.checkpw(encodedPass, hashedPassword) and inputemail == user['client_email']:
+                id = user['client_id']
+                login_user(User(id, inputemail, name))
+                if user['confirmed'] == 1:
+                    return redirect(url_for('dashboard'))
+                else:
+                    email = user['client_email']
+
+                    confirmation_code = ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))
+                    with cnx.cursor(dictionary=True) as cur:
+                        cur.execute("UPDATE clients SET confirmation_code = %s WHERE client_email = %s", (confirmation_code, inputemail))
+                        cnx.commit()
+
+                    confirm_link = url_for('confirm_email', email=email, code=confirmation_code, _external=True)
+                    msg = Message('Please Confirm Your Email', sender=('Oneredbox.ng', 'hello@oneredbox.ng'), recipients=[email])
+                    msg.body = f'Thank you for registering! Please confirm your email address by clicking on the following link: {confirm_link}'
+                    with app.app_context():
+                        mail.connect()
+                        mail.send(msg)
+                    return 'Please confirm your e-mail, an email has been sent!'
             else:
-                email = user['client_email']
-
-                confirmation_code = ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))
-                with cnx.cursor(dictionary=True) as cur:
-                    cur.execute("UPDATE clients SET confirmation_code = %s WHERE client_email = %s", (confirmation_code, inputemail))
-                    cnx.commit()
-
-                confirm_link = url_for('confirm_email', email=email, code=confirmation_code, _external=True)
-                msg = Message('Please Confirm Your Email', sender=('Oneredbox.ng', 'hello@oneredbox.ng'), recipients=[email])
-                msg.body = f'Thank you for registering! Please confirm your email address by clicking on the following link: {confirm_link}'
-                with app.app_context():
-                    mail.connect()
-                    mail.send(msg)
-                return 'Please confirm your e-mail, an email has been sent!'
-
+                flash("Wrong email or password")
         else:
             flash("Wrong email or password")
 

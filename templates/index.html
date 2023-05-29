@@ -7,63 +7,92 @@
 <body id="homepage">
     {% block content %}
         <section id="construction">
-            <div class="mainCard">
-                <div class="maincontent">
-                    <h1 class="headingText">Oneredbox<span class="ng">.ng</span></h1>
-                    <p class="paraText">
-                        Welcome to the only Nigerian construction company you'll ever need! 
-                        Our user-friendly dashboard allows you to easily create and 
-                        manage your projects. Stay updated on progress and enjoy a 
-                        hassle-free experience that simplifies your life.
-                    </p>
-                    <img class = "mainImage" src="{{url_for('static', filename = '/images/designs/1.jpg')}}" alt="">
-                    <a href="{{url_for('signup')}}" class="mainBtn" id="goToSignUp">design and build my space</a> 
+            <div class="maincontent">
+                <h1 class="headingText">Oneredbox<span class="ng">.ng</span></h1>
+                <p class="paraText">
+                    Welcome to the only Nigerian construction company you'll ever need! 
+                    Our user-friendly dashboard allows you to easily create and 
+                    manage your projects. Stay updated on progress and enjoy a 
+                    hassle-free experience that simplifies your life.
+                </p>
+                <img class = "mainImage" src="{{url_for('static', filename = '/images/designs/1.jpg')}}" alt="">
+                <div class="descriptions">
+                    <div class="features">
+                        <img src="../static/images/icons8-coins-64.png" alt="" class="circle">
+                        <div><p class="label1">Personal Dashboard</p></div>
+                    </div>
+                    <div class="features">
+                        <img src="../static/images/icons8-dashboard-64.png" alt="" class="circle">
+                        <div><p class="label1">FREE</p></div>
+                        <div><p class="label">Quotes</p></div>
+                    </div>
+                    <div class="features">
+                        <img src="../static/images/icons8-dashboard-80.png" alt="" class="circle">
+                        <div><p class="label1">Project</p></div>
+                        <div><p class="label">Updates</p></div>
+                    </div>
                 </div>
-            </div> 
+                <a href="{{url_for('signup')}}" class="mainBtn" id="goToSignUp">design and build my space</a> 
+            </div>
         </section>
         <section id="projects">
-            <div class="mainCard">
-                <div class="maincontent">
-                    <h1 class="headingText">Featured Projects</h1>
-                    <p class="paraText">
-                        Discover our featured projects that showcase the quality of our work. 
-                        From elegant homes to impressive commercial spaces, our portfolio 
-                        highlights the expertise and creativity of our team. Explore our 
-                        projects and get inspired for your own dream build!
-                    </p>
-                    <img class = "mainImage" src="{{url_for('static', filename = '/images/designs/2.jpg')}}" alt="">
-                    <a href="{{url_for('projects') }}" class="mainBtn" id="goToProjects">I want to see more projects</a> 
+            <div class="maincontent">
+                <h1 class="headingText">Featured Projects</h1>
+                <p class="paraText">
+                    Discover our featured projects that showcase the quality of our work. 
+                    From elegant homes to impressive commercial spaces, our portfolio 
+                    highlights the expertise and creativity of our team. Explore our 
+                    projects and get inspired for your own dream build!
+                </p>
+                <img class = "mainImage" src="{{url_for('static', filename = '/images/designs/2.jpg')}}" alt="">
+                <div class="descriptions">
+                    <div class="features">
+                        <img src="../static/images/account-50.png" alt="" class="circle">
+                        <div><p class="label1">Several</p></div>
+                        <div><p class="label">Happy Clients</p></div>
+                    </div>
+                    <div class="features">
+                        <img src="../static/images/icons8-construction-workers-80.png" alt="" class="circle">
+                        <div><p class="label1">Industry</p></div>
+                        <div><p class="label">Professionals</p></div>
+                    </div>
+                    <div class="features">
+                        <img src="../static/images/icons8-projects-50.png" alt="" class="circle">
+                        <div><p class="label1">Projects</p></div>
+                        <div><p class="label">Completed</p></div>
+                    </div>
                 </div>
+                <a href="{{url_for('projects') }}" class="mainBtn" id="goToProjects">I want to see more projects</a> 
             </div>
         </section>
         <section id="tinyhouse">
-            <div class="mainCard">
-                <div class="maincontent">
-                    <h1 class="headingText">Tinyhouse</h1>
-                    <p class="paraText">    
-                        Want to build a tiny house? Our team is here to help! 
-                        We understand the unique challenges and opportunities that 
-                        come with small space living. Sign up today and let us guide 
-                        you through the process of designing and constructing your perfect tiny home.
-                    </p>
-                    <img class = "mainImage" src="{{url_for('static', filename = '/images/designs/3.jpg')}}" alt="">
-                    <a href="{{url_for('signup') }}" class="mainBtn" id="mainButton">Build my Tiny House</a> 
+            <div class="maincontent">
+                <h1 class="headingText">Tinyhouse</h1>
+                <p class="paraText">    
+                    Want to build a tiny house? Our team is here to help! 
+                    We understand the unique challenges and opportunities that 
+                    come with small space living. Sign up today and let us guide 
+                    you through the process of designing and constructing your perfect tiny home.
+                </p>
+                <img class = "mainImage" src="{{url_for('static', filename = '/images/designs/3.jpg')}}" alt="">
+                <div class="descriptions">
+                    <div class="features">
+                        <img src="../static/images/house-64.png" alt="" class="circle">
+                        <div><p class="label1">Build</p></div>
+                        <div><p class="label">Tinyhouse</p></div>
+                    </div>
+                    <div class="features">
+                        <img src="../static/images/icons8-dashboard-64.png" alt="" class="circle">
+                        <div><p class="label1">FREE</p></div>
+                        <div><p class="label">Quotes</p></div>
+                    </div>
+                    <div class="features">
+                        <img src="../static/images/icons8-dashboard-80.png" alt="" class="circle">
+                        <div><p class="label1">Project</p></div>
+                        <div><p class="label">Updates</p></div>
+                    </div>
                 </div>
-            </div> 
-        </section>
-        <section id="footer">
-            <div class="mainCard" id="tinymain">
-                <div class="maincontent">
-                    <h1 class="headingText">Quote for my project</h1>
-                    <p class="paraText">
-                        Looking for the best quotes for your construction project? 
-                        Our system is designed to create automatic and very accurate quotes when 
-                        you create your projects. Have a unique project or request? No worries, 
-                        members of our team will look through your request and adjust your quotes. 
-                    </p>
-                    <img class = "mainImage" src="{{url_for('static', filename = '/images/designs/5.jpg')}}" alt="">
-                    <a href="{{url_for('signup') }}" class="mainBtn" id="getProjectQuote">I would like to get a free quote</a> 
-                </div>
+                <a href="{{url_for('signup') }}" class="mainBtn" id="mainButton">Build my Tiny House</a> 
             </div>
         </section>
     {% endblock %}
