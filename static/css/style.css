@@ -182,7 +182,7 @@ section {
     text-transform: uppercase;
     font-weight: bold;
     min-width: 30%;
-    min-height: 8%;
+    min-height: 4%;
     box-shadow: 2rem 2rem 5rem rgba(0, 0, 0, .5);
     border: 1px solid white;
     transition: .4s;
@@ -495,33 +495,74 @@ aside {
 @media screen and (max-width: 1000px) {
     .mainImage {
         border-radius:0%;
-        top: 2rem;
-        width: 90%;
+        top: 1rem;
+        min-width: 90%;
         height: auto;
-        right: 10rem;
+        right: 1rem;
     }
 
     .headingText {
-        top: 20rem;
-        font-size: clamp(3rem, 10vw, 5rem);
+        top: 30rem;
+        font-size: clamp(2rem, 2vw, 4rem);
     }
 
     .paraText {
-        top: 30rem;
-        
+        top: 38rem;
     }
 
     .descriptions {
-        top: 46rem;
-
+        top: 54rem;
     }
 
     .features {
-        padding-right: 2rem;
+        padding-right: 4rem;
+        height: 1rem;
+        width: auto;
+    }
+
+    .circle {
+        width: auto;
+        max-height: 5rem;
+    }
+
+    .label1 {
+        position: absolute;
+        justify-content: center;
+        color: white;
+        font-size: clamp(0.8rem, 3.5vw, 1.2rem);
+        top: 4rem;
+        padding-left: 1rem;
+    
+    }
+    
+    .label {
+        position: absolute;
+        justify-content: center;
+        color: white;
+        font-size: clamp(0.8rem, 3.5vw, 1.2rem);
+        top: 5rem;
+        padding-left: 1rem;
+        margin-top: .4rem;
     }
 
     .mainBtn {
-        top: 56rem;
+        position: absolute;
+        margin-top: 0rem;
+        padding: 1rem;
+        color: white;
+        margin-top: 1rem;
+        top: 65rem;
+        border-radius: 1rem;
+        background-image: linear-gradient(to left top, #d79645, #dfa04f, #e7aa58, #f0b562, #f8bf6c);
+        text-decoration: none;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 100;
+        min-width: 30%;
+        min-height: 4%;
+        box-shadow: 2rem 2rem 5rem rgba(0, 0, 0, .5);
+        border: 1px solid white;
+        transition: .4s;
         left: 10%;
     }
 
