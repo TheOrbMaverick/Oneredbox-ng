@@ -105,7 +105,7 @@ nav ul li .white_circle.active {
 }
 
 section {
-    min-height: 100vh;
+    min-height: 100svh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -175,7 +175,7 @@ section {
     color: white;
     margin-top: 6rem;
     top: 70%;
-    border-radius: 3rem;
+    border-radius: 2rem;
     background-image: linear-gradient(to left top, #d79645, #dfa04f, #e7aa58, #f0b562, #f8bf6c);
     text-decoration: none;
     text-align: center;
@@ -493,10 +493,14 @@ aside {
 
 /************************* MEDIA QUERY *****************************/
 @media screen and (max-width: 1000px) {
+    section {
+        height: 100svh;
+    }
+
     .mainImage {
         border-radius:0%;
         top: 1rem;
-        min-width: 90%;
+        min-width: 80%;
         height: auto;
         right: 1rem;
     }
@@ -508,10 +512,11 @@ aside {
 
     .paraText {
         top: 38rem;
+        font-size: clamp(.8rem, 3vw, 1.7rem);
     }
 
     .descriptions {
-        top: 54rem;
+        top: 50rem;
     }
 
     .features {
@@ -532,7 +537,6 @@ aside {
         font-size: clamp(0.8rem, 3.5vw, 1.2rem);
         top: 4rem;
         padding-left: 1rem;
-    
     }
     
     .label {
@@ -550,8 +554,9 @@ aside {
         margin-top: 0rem;
         padding: 1rem;
         color: white;
-        margin-top: 1rem;
-        top: 65rem;
+        margin-top: 62rem;
+        top: 0rem;
+        bottom: 5rem;
         border-radius: 1rem;
         background-image: linear-gradient(to left top, #d79645, #dfa04f, #e7aa58, #f0b562, #f8bf6c);
         text-decoration: none;
