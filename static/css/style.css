@@ -499,27 +499,34 @@ aside {
 
     .mainImage {
         border-radius:0%;
-        top: 1rem;
+        margin-top: 10%;
         min-width: 80%;
         height: auto;
-        right: 1rem;
+        right: 3rem;
+        top: 0;
     }
 
     .headingText {
-        top: 30rem;
+        top: 0;
+        margin-top: 90%;
+        margin-left: 8%;
         font-size: clamp(2rem, 2vw, 4rem);
     }
 
     .paraText {
-        top: 38rem;
+        top: 0;
+        margin-top: 105%;
+        margin-left: 6%;
         font-size: clamp(.8rem, 3vw, 1.7rem);
     }
 
     .descriptions {
-        top: 50rem;
+        top: 0;
+        margin-top: 157%;
     }
 
     .features {
+        top: 0;
         padding-right: 4rem;
         height: 1rem;
         width: auto;
@@ -534,7 +541,7 @@ aside {
         position: absolute;
         justify-content: center;
         color: white;
-        font-size: clamp(0.8rem, 3.5vw, 1.2rem);
+        font-size: clamp(.8rem, 3vw, 1.7rem);
         top: 4rem;
         padding-left: 1rem;
     }
@@ -543,7 +550,7 @@ aside {
         position: absolute;
         justify-content: center;
         color: white;
-        font-size: clamp(0.8rem, 3.5vw, 1.2rem);
+        font-size: clamp(.8rem, 3vw, 1.7rem);
         top: 5rem;
         padding-left: 1rem;
         margin-top: .4rem;
@@ -551,12 +558,11 @@ aside {
 
     .mainBtn {
         position: absolute;
-        margin-top: 0rem;
         padding: 1rem;
         color: white;
-        margin-top: 62rem;
+        margin-top: 59rem;
         top: 0rem;
-        bottom: 5rem;
+        bottom: 9rem;
         border-radius: 1rem;
         background-image: linear-gradient(to left top, #d79645, #dfa04f, #e7aa58, #f0b562, #f8bf6c);
         text-decoration: none;
@@ -568,7 +574,7 @@ aside {
         box-shadow: 2rem 2rem 5rem rgba(0, 0, 0, .5);
         border: 1px solid white;
         transition: .4s;
-        left: 10%;
+        left: 12%;
     }
 
 }
