@@ -1,0 +1,1241 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans", sans-serif;
+  box-sizing: border-box;
+  color: #e7aa58;
+}
+
+h1 {
+  color: white;
+}
+
+.logo {
+  text-decoration: none;
+  left: 0;
+  top: 0;
+  color: white;
+}
+
+.logo:hover {
+  text-decoration: none;
+  left: 0;
+  top: 0;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.ng {
+  color: forestgreen;
+}
+
+.sideNav {
+  display: block;
+  left: 0;
+  margin-top: 0.5%;
+  padding-left: 1%;
+  height: 100%;
+  padding-bottom: 20%;
+  position: fixed;
+  z-index: 5;
+}
+
+.logoImage {
+  max-width: 6rem;
+  height: auto;
+  top: 2%;
+  margin-top: 2rem;
+}
+
+.white_circle {
+  border-radius: 50%;
+  filter: brightness(0) invert(1);
+  color: white;
+  width: 2em;
+  height: 2em;
+  transition: 0.4s;
+}
+
+nav ul li .white_circle:hover {
+  transform: scale(2.1);
+}
+
+nav ul {
+  display: inline-block;
+  margin-top: 100%;
+  padding-top: 40%;
+  left: 0;
+  color: white;
+  list-style-type: none;
+  padding: 10px 20px;
+  height: 100%;
+  justify-content: space-between;
+}
+
+nav ul li {
+  display: flex;
+  justify-content: space-between;
+  left: 0;
+  margin-top: 100%;
+  padding-top: 3em;
+  width: 100%;
+}
+
+nav ul li .white_circle.active {
+  transform: scale(2.1);
+}
+
+.container {
+  display: block;
+  width: 100%;
+}
+
+.section {
+  display: flex;
+  /* justify-content: flex-start; */
+  /* align-items: start; */
+  max-height: 600em;
+  margin-bottom: 3em;
+  gap: 4em;
+}
+
+.maincontent {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0px;
+
+  /* backdrop-filter: blur(5px); */
+}
+
+.mainImage {
+  position: absolute;
+  max-width: 40%;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 2rem 1rem #040404;
+  border: 4px solid white;
+  right: 2%;
+  display: block;
+  background-size: cover;
+  background-position: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10rem;
+}
+
+.headingText {
+  position: absolute;
+  color: white;
+  font-size: clamp(3rem, 0.5rem + 5vw, 6rem);
+  font-weight: bolder;
+  margin-left: 2%;
+  padding-top: 2rem;
+  z-index: 1;
+  left: 3.5%;
+  top: 15%;
+  max-width: 60em;
+  font-weight: 300;
+}
+
+.paraText {
+  position: absolute;
+  color: white;
+  font-size: clamp(0.8rem, 0.5rem + 5vw, 1.7rem);
+  min-height: 6rem;
+  max-width: 50rem;
+  z-index: 1;
+  left: 6%;
+  top: 35%;
+  font-weight: 100;
+  line-height: 3rem;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+#loginButton:disabled,
+#loginButton[disabled] {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+#mainSignupButton:disabled,
+#mainSignupButton[disabled] {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+.mainBtn {
+  position: absolute;
+  margin-top: 1rem;
+  padding: 2rem;
+  color: white;
+  margin-top: 6rem;
+  top: 70%;
+  border-radius: 2rem;
+  background-image: linear-gradient(
+    to left top,
+    #d79645,
+    #dfa04f,
+    #e7aa58,
+    #f0b562,
+    #f8bf6c
+  );
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  min-width: 30%;
+  min-height: 4%;
+  box-shadow: 2rem 2rem 5rem rgba(0, 0, 0, 0.5);
+  border: 1px solid white;
+  transition: 0.4s;
+  left: 6%;
+}
+
+.mainBtn:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  color: #222828;
+}
+
+.descriptions {
+  position: absolute;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 2rem;
+  padding: 1rem;
+  min-width: 30%;
+  min-height: 15%;
+  left: 6%;
+  top: 55%;
+}
+
+.features {
+  position: relative;
+  display: outside;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+
+.circle {
+  border-radius: 50%;
+  filter: brightness(0) invert(1);
+  color: white;
+  margin-left: 0.5rem;
+  width: 5em;
+  height: 5em;
+  transition: 0.4s;
+  padding: 0.8rem;
+}
+
+.label1 {
+  /* position: absolute; */
+  /* justify-content: start; */
+  /* text-align: match-parent; */
+  color: white;
+  font-size: clamp(0.8rem, 3.5vw, 1.2rem);
+  top: 7rem;
+  /* padding-left: 2rem; */
+  width: 3rem;
+  display: inline-block;
+}
+
+.label {
+  /* position: absolute; */
+  /* justify-content: center; */
+  /* text-align: center; */
+  color: white;
+  font-size: clamp(0.8rem, 3.5vw, 1.2rem);
+  top: 7rem;
+  /* padding-left: 2rem; */
+  margin-top: 0.6rem;
+  display: inline-block;
+}
+
+.circle:hover {
+  scale: 1.2;
+}
+
+/****************************************           FORM SIGN UP          ******************************************/
+
+.form_signup {
+  position: absolute;
+  inset: 2px;
+  border-radius: 15px;
+  background: #171c1d;
+  z-index: 10;
+  border: 1px solid #d79645;
+  right: 0;
+  display: flex;
+  padding: 50px 40px;
+}
+
+.form_signup h2 {
+  color: white;
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+
+.inputbox {
+  position: relative;
+  width: 300px;
+  margin-top: 35px;
+}
+
+.inputbox input {
+  position: relative;
+  width: 100%;
+  padding: 20px 10px 10px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #171c1d;
+  font-size: 1em;
+  letter-spacing: 0.05em;
+  z-index: 10;
+}
+
+.inputbox span {
+  position: absolute;
+  left: 0;
+  padding: 2px 10px 10px;
+  font-size: 1.1em;
+  color: #8f8f8f;
+  pointer-events: none;
+  letter-spacing: 0.05em;
+  transition: 0.5s;
+}
+
+.inputbox input:valid ~ span,
+.inputbox input:focus ~ span {
+  color: #d79645;
+  transform: translateX(-10px) translateY(-5px);
+  font-size: 0.75em;
+}
+
+.inputbox i {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: #d79645;
+  border-radius: 4px;
+  transition: 0.5s;
+  pointer-events: none;
+  z-index: 9;
+}
+
+.inputbox input:valid ~ i,
+.inputbox input:focus ~ i {
+  height: 44px;
+}
+
+.links {
+  display: flex;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+}
+
+.links a {
+  position: relative;
+  margin: 30px 0;
+  font-size: 0.9em;
+  color: white;
+}
+
+.formBtn {
+  display: flex;
+  justify-content: center;
+  color: white;
+  border: none;
+  outline: none;
+  background-image: linear-gradient(
+    to left top,
+    #d79645,
+    #dfa04f,
+    #e7aa58,
+    #f0b562,
+    #f8bf6c
+  );
+  padding: 10px 25px;
+  width: 175px;
+  margin-top: 10px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.4s;
+  border: 1px solid white;
+}
+
+.formBtn:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+  color: #222828;
+}
+
+aside {
+  background-color: grey;
+  height: 100vh;
+}
+
+/****************** SIGN IN ********************/
+
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.backdrop {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 35;
+}
+
+.box {
+  padding-top: 4rem;
+  display: block;
+  position: relative;
+  width: 45rem;
+  height: 60rem;
+  background: #171c1d;
+  z-index: 30;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 1rem 1rem #040404;
+}
+
+.box::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 35rem;
+  height: 40rem;
+  transform-origin: bottom right;
+  background: linear-gradient(0deg, transparent, #d79645, #d79645);
+  animation: animate 6s linear infinite;
+  animation-delay: -3s;
+}
+
+.box::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 35rem;
+  height: 40rem;
+  transform-origin: bottom right;
+  background: linear-gradient(0deg, transparent, #d79645, #d79645);
+  animation: animate 6s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.form {
+  padding-top: 4rem;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  inset: 0.25rem;
+  border-radius: 1rem;
+  background: #171c1d;
+  z-index: 31;
+}
+
+.signinbtn {
+  max-width: 6rem;
+  height: auto;
+  top: 2%;
+  margin-top: 2rem;
+  right: 1rem;
+  position: fixed;
+  z-index: 100;
+}
+
+#loginButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(229, 24, 24);
+  background-image: linear-gradient(
+    to left top,
+    #d79645,
+    #dfa04f,
+    #e7aa58,
+    #f0b562,
+    #f8bf6c
+  );
+  margin-top: 4rem;
+  border-radius: 4rem;
+  height: 4rem;
+  width: 10rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.4s;
+  border: 1px solid white;
+  margin-right: 60px;
+}
+
+#loginButton:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+  color: #222828;
+}
+
+.signinbtn a {
+  text-decoration: none;
+  font-size: 16px;
+  padding: 8px;
+  border-radius: 30px;
+  white-space: nowrap;
+}
+
+/************************* MEDIA QUERY *****************************/
+@media (max-width: 70em) {
+  * {
+    margin: 0;
+    padding: 0;
+    font-family: "Open Sans", sans-serif;
+    box-sizing: border-box;
+    color: #e7aa58;
+  }
+
+  .sideNav {
+    display: block;
+    left: 0;
+    margin-top: 0;
+    padding-left: 0.1%;
+    height: 100%;
+    padding-bottom: 20%;
+    position: fixed;
+    /* z-index: 5; */
+    /* background-color: brown; */
+  }
+
+  .logoImage {
+    max-width: 6rem;
+    height: auto;
+    top: 2%;
+    margin-top: 2rem;
+  }
+
+  .white_circle {
+    border-radius: 50%;
+    filter: brightness(0) invert(1);
+    color: white;
+    width: 2em;
+    height: 2em;
+    transition: 0.4s;
+  }
+
+  nav ul li .white_circle:hover {
+    transform: scale(2.1);
+  }
+
+  nav ul {
+    display: inline-block;
+    margin-top: 100%;
+    padding-top: 40%;
+    left: 0;
+    color: white;
+    list-style-type: none;
+    padding: 10px 20px;
+    height: 100%;
+    justify-content: space-between;
+  }
+
+  nav ul li {
+    display: flex;
+    justify-content: space-between;
+    left: 0;
+    margin-top: 100%;
+    padding-top: 3em;
+    width: 100%;
+  }
+
+  nav ul li .white_circle.active {
+    transform: scale(2.1);
+  }
+
+  .container {
+    display: block;
+    width: 100%;
+    align-items: start;
+    /* flex-direction: column; */
+  }
+
+  .section {
+    position: static;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0;
+    width: auto;
+    height: 160vh;
+    flex-direction: column-reverse;
+  }
+
+  .maincontent {
+    /* position: static;  */
+    max-width: 80%;
+    height: 100vh;
+    margin: 0 auto 1px auto;
+    padding: 0;
+
+    /* backdrop-filter: blur(5px); */
+    align-items: center;
+  }
+
+  .mainImage {
+    position: static;
+    max-width: 90%;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 2rem 1rem #040404;
+    border: 4px solid white;
+    right: 2%;
+    /* display: block; */
+    background-size: cover;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10rem;
+    margin-bottom: 0rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .headingText {
+    position: relative;
+    color: white;
+    font-size: clamp(3rem, 0.5rem + 5vw, 6rem);
+    font-weight: bolder;
+    margin: 0px auto;
+    padding-top: 0.5rem;
+    z-index: 1;
+    left: 0%;
+    top: 10%;
+    max-width: 60em;
+    font-weight: 300;
+    text-align: center;
+  }
+
+  .paraText {
+    /* position: absolute; */
+    color: white;
+    font-size: clamp(0.4rem, 0.5rem + 2vw, 1.7rem);
+    min-height: 6rem;
+    min-width: 100%;
+    z-index: 1;
+    left: 2%;
+    right: 2%;
+    top: 18%;
+    font-weight: 100;
+    line-height: 2.6rem;
+    text-align: justify;
+    margin: 0px auto;
+    /* text-justify: inter-word; */
+  }
+
+  .descriptions {
+    position: absolute;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* grid-template-rows: 1fr 1fr 1fr; */
+    margin: 20px auto;
+    padding: 1rem;
+    min-width: 30%;
+    min-height: 15%;
+    left: 0%;
+    top: 30%;
+    justify-content: center;
+    /* place-items: center; */
+    align-items: center;
+  }
+
+  .features {
+    position: static;
+    display: block;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  .circle {
+    border-radius: 50%;
+    filter: brightness(0) invert(1);
+    color: white;
+    margin-left: 0.5rem;
+    max-width: 5em;
+    max-height: 5em;
+    transition: 0.4s;
+    padding: 0.8rem;
+    width: auto;
+    height: auto;
+  }
+
+  .mainBtn {
+    position: absolute;
+    margin-top: 10rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0rem;
+    padding: 2rem;
+    color: white;
+    /* margin-top: 6rem; */
+    top: 50%;
+    border-radius: 2rem;
+    background-image: linear-gradient(
+      to left top,
+      #d79645,
+      #dfa04f,
+      #e7aa58,
+      #f0b562,
+      #f8bf6c
+    );
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    width: 100%;
+    max-height: 10%;
+    box-shadow: 2rem 2rem 5rem rgba(0, 0, 0, 0.5);
+    border: 1px solid white;
+    transition: 0.4s;
+    left: 0%;
+  }
+
+  .mainBtn:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    color: #222828;
+  }
+}
+/* @media (max-width: 1279px) {
+  .mainImage {
+    border-radius: 0%;
+    margin-top: 100%;
+    margin-left: 14%;
+    min-width: 80%;
+    height: 30%;
+    right: 3rem;
+    left: 0;
+    top: 0;
+    border: none;
+  }
+  .logoImage {
+    max-width: 1rem;
+    height: auto;
+    top: 10%;
+    margin-top: 1rem;
+    height: 7%;
+  }
+
+  .headingText {
+    top: 0;
+    margin-left: 2%;
+    font-size: clamp(1.2rem, 1.2vw, 1.2rem);
+  }
+
+  .paraText {
+    top: 0;
+    margin-top: 5%;
+    margin-left: 1%;
+    margin-right: 19%;
+    font-size: clamp(1.3rem, 1.5vw, 3rem);
+  }
+
+  .descriptions {
+    top: 0;
+    margin-top: 70%;
+  }
+
+  .features {
+    text-align: center;
+    margin: 1rem;
+  }
+
+  .circle {
+    width: auto;
+    max-height: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .label1 {
+    position: relative;
+    justify-content: center;
+    color: white;
+    font-size: clamp(0.8rem, 3vw, 1.7rem);
+    top: 2rem;
+    padding-left: 1rem;
+    height: 0;
+  }
+
+  .label {
+    position: relative;
+    justify-content: center;
+    color: white;
+    font-size: clamp(0.8rem, 3vw, 1.7rem);
+    top: 5rem;
+    padding-left: 1rem;
+    margin-top: 0.4rem;
+  }
+
+  .mainBtn {
+    position: absolute;
+    padding: 0.9rem;
+    color: white;
+    margin-top: 10rem;
+    top: 0rem;
+    bottom: 0rem;
+    border-radius: 1rem;
+    font-weight: 400;
+    min-width: 50%;
+    min-height: 8%;
+    border: 1px solid white;
+    transition: 0.4s;
+    left: 10%;
+    transform: translateX(-50%);
+  }
+} */
+
+/* .mainImage {
+        border-radius:0%;
+        margin-top: 10%;
+        min-width: 80%;
+        height: auto;
+        right: 3rem;
+        top: 0;
+    }
+
+    .headingText {
+        top: 0;
+        margin-top: 90%;
+        margin-left: 8%;
+        font-size: clamp(2rem, 2vw, 4rem);
+    }
+
+    .paraText {
+        top: 0;
+        margin-top: 105%;
+        margin-left: 6%;
+        font-size: clamp(.8rem, 3vw, 1.7rem);
+    }
+
+    .descriptions {
+        top: 0;
+        margin-top: 157%;
+    }
+
+    .features {
+        top: 0;
+        padding-right: 4rem;
+        height: 1rem;
+        width: auto;
+    }
+
+    .circle {
+        width: auto;
+        max-height: 5rem;
+    }
+
+    .label1 {
+        position: absolute;
+        justify-content: center;
+        color: white;
+        font-size: clamp(.8rem, 3vw, 1.7rem);
+        top: 4rem;
+        padding-left: 1rem;
+    }
+    
+    .label {
+        position: absolute;
+        justify-content: center;
+        color: white;
+        font-size: clamp(.8rem, 3vw, 1.7rem);
+        top: 5rem;
+        padding-left: 1rem;
+        margin-top: .4rem;
+    }
+
+    .mainBtn {
+        position: absolute;
+        padding: 1rem;
+        color: white;
+        margin-top: 59rem;
+        top: 0rem;
+        bottom: 9rem;
+        border-radius: 1rem;
+        background-image: linear-gradient(to left top, #d79645, #dfa04f, #e7aa58, #f0b562, #f8bf6c);
+        text-decoration: none;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 100;
+        min-width: 30%;
+        min-height: 4%;
+        box-shadow: 2rem 2rem 5rem rgba(0, 0, 0, .5);
+        border: 1px solid white;
+        transition: .4s;
+        left: 12%;
+    } */
+
+/* .container {
+  height: 100svh;
+  width: 100svw;
+  background-image: linear-gradient(
+    to right bottom,
+    #374141,
+    #2c3435,
+    #222828,
+    #171c1d,
+    #0b0f10
+  );
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scrollbar-width: none;
+} */
+
+/* .container::-webkit-scrollbar { */
+/* Hide the scrollbar for WebKit-based browsers (Chrome, Safari, Edge) */
+/* display: none; */
+/* } */
+
+/* @media screen and (max-width: 425px) { */
+/* Other styles for mobile view... */
+
+/* .mainImage {
+    border-radius: 20%; Make the image circular on mobile view
+    margin-top: 1220%;
+    margin-left: 14%;
+    min-width: 80%;
+    height: 75%;
+    right: 3rem;
+    left: 0;
+    top: 0;
+    border: none; */
+/* } */
+
+/* Other styles for mobile view... */
+/* } */
+
+/* Styles for mobile view */
+/* @media screen and (max-width: 425px) { */
+/* .signinbtn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-weight: 800;
+    z-index: 4;
+  }
+
+  .signinbtn a {
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 16px;
+
+    border-radius: 30px;
+  } */
+/* } */
+
+/* Your other CSS styles... */
+
+/* .mainBtn {
+  position: absolute;
+  padding: 2rem;
+  color: white;
+  margin-top: 6rem;
+  top: 70%;
+  border-radius: 2rem;
+  background-image: linear-gradient(
+    to left top,
+    #d79645,
+    #dfa04f,
+    #e7aa58,
+    #f0b562,
+    #f8bf6c
+  );
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  min-width: 30%;
+  min-height: 4%;
+  box-shadow: 2rem 2rem 5rem rgba(0, 0, 0, 0.5);
+  border: 1px solid white;
+  transition: 0.4s;
+  left: 6%;
+  margin-top: 70px;
+}
+
+.mainBtn:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  color: #222828;
+} */
+
+/* Add new media query for mobile view */
+/* @media screen and (max-width: 768px) {
+  .mainBtn {
+    padding: 0.9rem; Reduce the padding for mobile view
+    font-size: 1.2rem; Reduce the font size for mobile view
+    min-width: 50%; Adjust the width for mobile view
+    top: 80%; Adjust the position for mobile view
+    left: 50%; Center the button horizontally
+    transform: translateX(-50%); Center the button horizontally
+    justify-items: center;
+    bottom: center;
+  }
+} */
+
+/* Styles for mobile view */
+/* @media screen and (max-width: 425px) {
+  .sideNav ul {
+    display: none;
+  }
+
+  .sideNav .logoImage {
+    max-width: 60px;
+  }
+} */
+
+/* @media screen and (max-width: 834px) {
+  .mainImage {
+    border-radius: 50%;
+    margin-top: 90%;
+    margin-left: 12%;
+    min-width: 60%;
+    height: 40%;
+    right: 2rem;
+    left: 0;
+    top: 0;
+    border: none;
+  }
+  section {
+    min-height: 100svh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(57, 67, 67, 0);
+    scroll-snap-align: start;
+    transition: 0.4s;
+  }
+
+  .maincontent {
+    position: relative;
+    width: 90svw;
+    height: 80svh;
+    margin: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+  }
+
+  .headingText {
+    
+    position: absolute;
+    color: white;
+    font-size: clamp(4rem, 10vw, 7rem);
+    margin-left: 2%;
+    padding-top: 1.2rem;
+    z-index: 1;
+    left: 3.5%;
+    top: 5%;
+    max-width: 60rem;
+    font-weight: 500;
+    height: 0;
+    margin-left: 10%;
+  }
+
+  .paraText {
+    position: absolute;
+    color: white;
+    font-size: clamp(0.8rem, 3.5vw, 1.7rem);
+    max-height: 6rem;
+    max-width: 50rem;
+    z-index: 1;
+    left: 6%;
+    top: 20%;
+    font-weight: 100;
+    line-height: 3rem;
+    text-align: justify;
+    text-justify: inter-word;
+    margin-left: 8%;
+  }
+  .features {
+    top: 0;
+    padding-right: 6rem;
+    height: 1rem;
+    width: auto;
+    margin-left: 110%;
+  }
+
+  .circle {
+    width: auto;
+    max-height: 9rem;
+  }
+
+  .label1 {
+    position: absolute;
+    justify-content: center;
+    color: white;
+    font-size: clamp(0.8rem, 3vw, 1.7rem);
+    top: 8rem;
+    padding-left: 1rem;
+    height: 0;
+    margin-left: 10%;
+  }
+
+  .label {
+    position: absolute;
+    justify-content: center;
+    color: white;
+    font-size: clamp(0.8rem, 3vw, 1.7rem);
+    top: 5rem;
+    padding-left: 1rem;
+    margin-top: 0.4rem;
+    margin-left: 20%;
+  }
+  .descriptions {
+    position: absolute;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 2rem;
+    padding: 1rem;
+    min-width: 30%;
+    min-height: 15%;
+    left: 6%;
+    top: 35%;
+  }
+  .mainBtn {
+    position: absolute;
+    align-items: center;
+    margin-top: 1rem;
+    padding: 2rem;
+    color: white;
+    margin-top: 6rem;
+    top: 50%;
+    width: 80%;
+    border-radius: 2rem;
+    background-image: linear-gradient(
+      to left top,
+      #d79645,
+      #dfa04f,
+      #e7aa58,
+      #f0b562,
+      #f8bf6c
+    );
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    min-width: 30%;
+    min-height: 4%;
+    box-shadow: 2rem 2rem 5rem rgba(0, 0, 0, 0.5);
+    border: 1px solid white;
+    transition: 0.4s;
+    left: 6%;
+  }
+} */
+
+/* Your other CSS styles... */
+
+/* Add new media query for mobile view */
+/* @media screen and (max-width: 475px) { */
+/* .mainImage {
+    border-radius: 50%; Make the image circular on mobile view
+    margin-top: 110%;
+    margin-left: 4%;
+    margin-right: 20%;
+    min-width: 80%;
+    height: 45%;
+    right: 3rem;
+    left: 0;
+    top: 0;
+    border: none;
+  }
+
+  .headingText {
+    top: 0;
+    margin-left: 8%;
+    font-size: clamp(3rem, 2vw, 4rem);
+  }
+
+  .paraText {
+    top: 0;
+    margin-top: 22%;
+    margin-left: 6%;
+    font-size: clamp(1.1rem, 1vw, 2rem);
+  }
+
+  .descriptions {
+    top: 0;
+    margin-top: 80%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  } */
+
+/* .mainBtn {
+    
+    align-items: center;
+    justify-content: center;
+    display: flex; Add display flex to align items and justify content
+    margin-top: 1rem;
+    margin-left: 141px;
+    padding: 1.8rem;
+    color: white;
+    margin-top: 3rem;
+    margin-right: 0%;
+    top: 44%;
+    bottom: 1150%;
+    width: 80%;
+    border-radius: 1rem;
+    background-image: linear-gradient(
+      to left top,
+      #d79645,
+      #dfa04f,
+      #e7aa58,
+      #f0b562,
+      #f8bf6c
+    );
+    text-align: center; Add text-align center to center the text inside the button
+  } */
+/* } */

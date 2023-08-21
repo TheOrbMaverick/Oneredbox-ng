@@ -1,14 +1,14 @@
-{% extends 'base.html'%}
 
-{% block title %}
-<title>Oneredbox - Sign up</title>
-{% endblock %}
+<link rel="stylesheet" href="../static/css/style.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
-<body id="signuppage">
-    {% block content %}
+<body id="signuppage" class="loginpage">
     <section>
-        <div class="mainCard">
-            <div class="form_signup">
+        <div class=" box">
+            <div class="form">
+                <div>
+                <span class="icon"><i class="fas fa-home"></i></span>
+                </div>
                 <!-- GET requests are not safe. POST requests are safer, don't appear in the browser line and cannot be cached -->
                 <form action="#" method="POST">
                     <h2 class="finances">Sign up</h2>
@@ -48,9 +48,15 @@
                         <a href="#">Login</a>
                     </div>
                     <button type="submit" href="#" class="formBtn" id="mainSignupButton">SIGN UP</button> 
+                    <div class="card_terms">
+                        <input type="checkbox" name="" id="terms"> <span>I have read and agree to the <a href="">Terms of Service</a></span>
+                    </div>
+                  </div>
+                    <span class="icon"><i class="fas fa-home"></i></span>
+
                 </form>
             </div>
         </div>
     </section>
-    {% endblock %} 
+
 </body>

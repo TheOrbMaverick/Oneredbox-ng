@@ -1,100 +1,164 @@
-{% extends 'base.html'%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/index.css" />
+    <link rel="stylesheet" href="../static/css/indexBootstrap.css" />
 
-{% block title %}
-<title>Oneredbox - Your construction company</title>
-{% endblock %}
+    <title>Oneredbox - Your construction company</title>
 
-<body id="homepage">
-    {% block content %}
-        <section id="construction">
-            <div class="maincontent">
-                <h1 class="headingText">Oneredbox<span class="ng">.ng</span></h1>
-                <p class="paraText">
-                    Welcome to the only Nigerian construction company you'll ever need! 
-                    Our user-friendly dashboard allows you to easily create and 
-                    manage your projects. Stay updated on progress and enjoy a 
-                    hassle-free experience that simplifies your life.
-                </p>
-                <img class = "mainImage" src="{{url_for('static', filename = '/images/designs/1.jpg')}}" alt="">
-                <div class="descriptions">
-                    <div class="features">
-                        <img src="../static/images/icons8-coins-64.png" alt="" class="circle">
-                        <div><p class="label1">Personal Dashboard</p></div>
-                    </div>
-                    <div class="features">
-                        <img src="../static/images/icons8-dashboard-64.png" alt="" class="circle">
-                        <div><p class="label1">FREE</p></div>
-                        <div><p class="label">Quotes</p></div>
-                    </div>
-                    <div class="features">
-                        <img src="../static/images/icons8-dashboard-80.png" alt="" class="circle">
-                        <div><p class="label1">Project</p></div>
-                        <div><p class="label">Updates</p></div>
-                    </div>
-                </div>
-                <a href="{{url_for('signup')}}" class="mainBtn" id="goToSignUp">design and build my space</a> 
+    <link
+      rel="shortcut icon"
+      type="x-icon"
+      href="../static/images/Oneredbox-white.png"
+    />
+    <title>Oneredbox</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@1&family=Lobster&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100&family=Libre+Baskerville:ital@1&family=Lobster&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="/static/css/indexBootstrap.css" />
+    <link rel="stylesheet" href="/static/css/index.css" />
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+  </head>
+  <body>
+    <div class="signinbtn">
+      <a href="/login">Login</a>
+    </div>
+    <nav class="sideNav">
+            <a href="/"><img src="../static/images/Oneredbox-white.png" alt="" class="logoImage"></a>
+            <h2 class="logo"><a href="/" style="display: none;">Oneredbox<span class="ng">.ng</span></a></h2>
+            <ul>
+                <li><a href="/#construction"><img src="../static/images/construction-64.png" alt="" class="white_circle"> </div></a></li>
+                <li><a href="/#tinyhouse"><img src="../static/images/house-64.png" alt="" class="white_circle"></div></a></li>
+                <li><a href="/#projects"><img src="../static/images/icons8-clipboard-64.png" alt="" class="white_circle"></div></a></li>
+            </ul>
+    </nav>
+    <div class="container">
+      <section id="construction" class="section">
+        <div class="maincontent">
+          <h1 class="headingText">Oneredbox<span class="ng">.ng</span></h1>
+          <p class="paraText">
+            Welcome to the only Nigerian construction company you'll ever need!
+            Our user-friendly dashboard allows you to easily create and manage
+            your projects. Stay updated on progress and enjoy a hassle-free
+            experience that simplifies your life.
+          </p>
+          
+          <div class="descriptions">
+            <div class="features">
+              <img src="../static/images/icons8-coins-64.png" alt="" class="circle" />
+              <div><p class="label1">Personal </p></div>
+              <div><p class="label">Dashboard</p></div>
             </div>
-        </section>
-        <section id="projects">
-            <div class="maincontent">
-                <h1 class="headingText">Featured Projects</h1>
-                <p class="paraText">
-                    Discover our featured projects that showcase the quality of our work. 
-                    From elegant homes to impressive commercial spaces, our portfolio 
-                    highlights the expertise and creativity of our team. Explore our 
-                    projects and get inspired for your own dream build!
-                </p>
-                <img class = "mainImage" src="{{url_for('static', filename = '/images/designs/2.jpg')}}" alt="">
-                <div class="descriptions">
-                    <div class="features">
-                        <img src="../static/images/account-50.png" alt="" class="circle">
-                        <div><p class="label1">Several</p></div>
-                        <div><p class="label">Happy Clients</p></div>
-                    </div>
-                    <div class="features">
-                        <img src="../static/images/icons8-construction-workers-80.png" alt="" class="circle">
-                        <div><p class="label1">Industry</p></div>
-                        <div><p class="label">Professionals</p></div>
-                    </div>
-                    <div class="features">
-                        <img src="../static/images/icons8-projects-50.png" alt="" class="circle">
-                        <div><p class="label1">Projects</p></div>
-                        <div><p class="label">Completed</p></div>
-                    </div>
-                </div>
-                <a href="{{url_for('projects') }}" class="mainBtn" id="goToProjects">I want to see more projects</a> 
+            <div class="features">
+              <img src="../static/images/icons8-dashboard-64.png" alt="" class="circle" />
+              <div><p class="label1">FREE </p></div>
+              <div><p class="label">Quotes</p></div>
             </div>
-        </section>
-        <section id="tinyhouse">
-            <div class="maincontent">
-                <h1 class="headingText">Tinyhouse</h1>
-                <p class="paraText">    
-                    Want to build a tiny house? Our team is here to help! 
-                    We understand the unique challenges and opportunities that 
-                    come with small space living. Sign up today and let us guide 
-                    you through the process of designing and constructing your perfect tiny home.
-                </p>
-                <img class = "mainImage" src="{{url_for('static', filename = '/images/designs/3.jpg')}}" alt="">
-                <div class="descriptions">
-                    <div class="features">
-                        <img src="../static/images/house-64.png" alt="" class="circle">
-                        <div><p class="label1">Build</p></div>
-                        <div><p class="label">Tinyhouse</p></div>
-                    </div>
-                    <div class="features">
-                        <img src="../static/images/icons8-dashboard-64.png" alt="" class="circle">
-                        <div><p class="label1">FREE</p></div>
-                        <div><p class="label">Quotes</p></div>
-                    </div>
-                    <div class="features">
-                        <img src="../static/images/icons8-dashboard-80.png" alt="" class="circle">
-                        <div><p class="label1">Project</p></div>
-                        <div><p class="label">Updates</p></div>
-                    </div>
-                </div>
-                <a href="{{url_for('signup') }}" class="mainBtn" id="mainButton">Build my Tiny House</a> 
+            <div class="features">
+              <img src="../static/images/icons8-dashboard-80.png" alt="" class="circle" />
+              <div><p class="label1">Project </p></div>
+              <div><p class="label">Updates</p></div>
             </div>
-        </section>
-    {% endblock %}
-</body>
+          </div>
+          <a href="/signup" class="mainBtn" id="goToSignUp"
+            >design and build my space</a
+          >
+        </div>
+        <img class="mainImage" src="../static/images/designs/1.jpg" alt="" />
+        
+      </section>
+      <section id="projects" class="section">
+        <div class="maincontent">
+          <h1 class="headingText">Featured Projects</h1>
+          <p class="paraText">
+            Discover our featured projects that showcase the quality of our
+            work. From elegant homes to impressive commercial spaces, our
+            portfolio highlights the expertise and creativity of our team.
+            Explore our projects and get inspired for your own dream build!
+          </p>
+          
+          <div class="descriptions">
+            <div class="features">
+              <img src="../static/images/account-50.png" alt="" class="circle" />
+              <div><p class="label1">Many</p></div>
+              <div><p class="label">Happy Clients</p></div>
+            </div>
+            <div class="features">
+              <img
+                src="../static/images/icons8-construction-workers-80.png"
+                alt=""
+                class="circle"
+              />
+              <div><p class="label1">Industry </p></div>
+              <div><p class="label">Professionals</p></div>
+            </div>
+            <div class="features">
+              <img src="../static/images/icons8-projects-50.png" alt="" class="circle" />
+              <div><p class="label1">Projects </p></div>
+              <div><p class="label">Completed</p></div>
+            </div>
+          </div>
+          <a href="/projects" class="mainBtn" id="goToProjects"
+            >I want to see more projects</a
+          >
+        </div>
+        
+        <img class="mainImage" src="../static/images/designs/2.jpg" alt="" />
+      </section>
+      <section id="tinyhouse" class="section">
+        <div class="maincontent">
+          <h1 class="headingText">Tinyhouse</h1>
+          <p class="paraText">
+            Want to build a tiny house? Our team is here to help! We understand
+            the unique challenges and opportunities that come with small space
+            living. Sign up today and let us guide you through the process of
+            designing and constructing your perfect tiny home.
+          </p>
+          
+          <div class="descriptions">
+            <div class="features">
+              <img src="../static/images/house-64.png" alt="" class="circle" />
+              <div><p class="label1">Build </p></div>
+              <div><p class="label">Tinyhouse</p></div>
+            </div>
+            <div class="features">
+              <img src="../static/images/icons8-dashboard-64.png" alt="" class="circle" />
+              <div><p class="label1">FREE </p></div>
+              <div><p class="label">Quotes</p></div>
+            </div>
+            <div class="features">
+              <img src="../static/images/icons8-dashboard-80.png" alt="" class="circle" />
+              <div><p class="label1">Project </p></div>
+              <div><p class="label">Updates</p></div>
+            </div>
+          </div>
+          <a href="/signup" class="mainBtn" id="mainButton"
+            >Build my Tiny House</a
+          >
+        </div>
+        <img class="mainImage" src="../static/images/designs/3.jpg" alt="" />
+        
+      </section>
+    </div>
+    <script src="/static/js/script.js"></script>
+  </body>
 </html>

@@ -1,258 +1,166 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oneredbox.ng - Our Projects</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"> 
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@1&family=Lobster&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100&family=Libre+Baskerville:ital@1&family=Lobster&display=swap" rel="stylesheet">
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
-    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/bootstrap.css') }}"> 
-    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/projectstyle.css') }}"> 
-    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/jquery.flipster.min.css') }}">
-</head>
-<body id="projectpage">
-    <nav class="topNav">
-        <a href="{{url_for('index')}}"><img src="../static/images/Oneredbox-white.png" alt="" class="plogoImage"></a>
-        <ul>
-            <li><a href="{{url_for('projects') }}#designs">Designs</a></li>
-            <li><a href="{{url_for('projects') }}#construction">Construction</a></li>
-            <li><a href="{{url_for('projects') }}#interiors">Interiors</a></li>
-            <li><a href="{{url_for('projects') }}#renovations">Renovations</a></li>
-        </ul>
-        <a href="{{url_for('login') }}">Login</a>
+<html>
+  <head>
+    <link rel="stylesheet" href="../static/css/home.css" />
+    <title>Header with Login Button</title>
+  </head>
+  <body>
+    <!-- <header>
+        <img src="../static/images/Oneredbox-white.png" alt="" class="image-small">
+        <nav class="sideNav">
+            <a href="/"><img src="../static/images/Oneredbox-white.png" alt="" class="logoImage"></a>
+            <h2 class="logo"><a href="/" style="display: none;">Oneredbox<span class="ng">.ng</span></a></h2>
+            <ul>
+                <li><a href="/#construction"><img src="../static/images/construction-64.png" alt="" class="white_circle"> </div></a></li>
+                <li><a href="/#tinyhouse"><img src="../static/images/house-64.png" alt="" class="white_circle"></div></a></li>
+                <li><a href="/#projects"><img src="../static/images/icons8-clipboard-64.png" alt="" class="white_circle"></div></a></li>
+            </ul>
+        </nav>
+        <div class="signinbtn">
+            <a href="/login">Login</a>
+        </div>
+    </header> -->
+    <div class="signinbtn">
+      <a href="/login">Login</a>
+    </div>
+    <nav class="sideNav">
+      <a href="/"
+        ><img src="../static/images/Oneredbox-white.png" alt="" class="logoImage"
+      /></a>
+
+      <!-- <h2 class="logo"><a href="/" style="display: none;">Oneredbox<span class="ng">.ng</span></a></h2> -->
+      <!-- <ul>
+                  <li><a href="/#construction"><img src="../static/images/construction-64.png" alt="" class="white_circle"> </div></a></li>
+                  <li><a href="/#tinyhouse"><img src="../static/images/house-64.png" alt="" class="white_circle"></div></a></li>
+                  <li><a href="/#projects"><img src="../static/images/icons8-clipboard-64.png" alt="" class="white_circle"></div></a></li>
+              </ul> -->
     </nav>
     <div class="container">
-        <div class="hero" id="designs">
-            <div class="carousel">
-                <div class="headings">DESIGNS</div>
-                <ul>
-                    <li>
-                        <p class="headingText">Design of an open kitchen in an apartment.</p>
-                        <img src="{{url_for('static', filename = '/images/designs/1.jpg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">Bathroom with toilet and bath tub.</p>
-                        <img src="{{url_for('static', filename = '/images/designs/2.jpg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">Cosy modern living room design.</p>
-                        <img src="{{url_for('static', filename = '/images/designs/3.jpg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">Bedroom in an apartment </p>
-                        <img src="{{url_for('static', filename = '/images/designs/4.jpg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">Perspective view of building design.</p>
-                        <img src="{{url_for('static', filename = '/images/designs/5.jpg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">Tiny house exterior view.</p>
-                        <img src="{{url_for('static', filename = '/images/designs/6.jpg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">Modern kitchen in an apartment.</p>
-                        <img src="{{url_for('static', filename = '/images/designs/7.PNG')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">Modern dining room.</p>
-                        <img src="{{url_for('static', filename = '/images/designs/8.jpg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">Spacious modern kitchen with an island in it. </p>
-                        <img src="{{url_for('static', filename = '/images/designs/10.jpg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">Spacious bathroom with toilet and bath. </p>
-                        <img src="{{url_for('static', filename = '/images/designs/11.jpg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">Design of a private home cinema. </p>
-                        <img src="{{url_for('static', filename = '/images/designs/12.jpg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">Day version of a living room.</p>
-                        <img src="{{url_for('static', filename = '/images/designs/13.jpg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">Night version of a living room </p>
-                        <img src="{{url_for('static', filename = '/images/designs/14.jpg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">Design of a home office.</p>
-                        <img src="{{url_for('static', filename = '/images/designs/15.jpg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">Modern Bathroom Design</p>
-                        <img src="{{url_for('static', filename = '/images/designs/16.JPG')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">A large master bedroom.</p>
-                        <img src="{{url_for('static', filename = '/images/designs/17.jpg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">Bedroom Design. </p>
-                        <img src="{{url_for('static', filename = '/images/designs/18.PNG')}}" alt="">
-                    </li>
-                </ul>
-            </div>
-            <div class="sectionNames"><a href="{{url_for('projects')}}#construction">Construction Works Below</a></div>
-            <div class="sectionArrow"><a href="{{url_for('projects')}}#construction"><img src="{{url_for('static', filename = '/images/downarrow2.png')}}" alt=""></a></div>
-        </div>
-        <div class="hero" id="construction">
-            <div class="carousel">
-                <div class="headings">CONSTRUCTION</div>
-                <ul>
-                    <li>
-                        <p class="headingText">Raft foundation beams</p>
-                        <img src="{{url_for('static', filename = '/images/construction/2.jpeg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">Raft foundation floor</p>
-                        <img src="{{url_for('static', filename = '/images/construction/3.jpeg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">Iron rods in place for decking</p>
-                        <img src="{{url_for('static', filename = '/images/construction/4.jpeg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">Completed decking level</p>
-                        <img src="{{url_for('static', filename = '/images/construction/5.jpeg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">Perspective view of work in progress</p>
-                        <img src="{{url_for('static', filename = '/images/construction/6.jpeg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">Construction in progress.</p>
-                        <img src="{{url_for('static', filename = '/images/construction/7.jpeg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">Perspective view of the completed building.</p>
-                        <img src="{{url_for('static', filename = '/images/construction/8.jpeg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">Construction of a floating stairs</p>
-                        <img src="{{url_for('static', filename = '/images/construction/9.jpeg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">Finishing works in the living room area.</p>
-                        <img src="{{url_for('static', filename = '/images/construction/10.jpeg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">Finishing works in kitchen.</p>
-                        <img src="{{url_for('static', filename = '/images/construction/11.jpeg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">Finishing works for room that shows a balcony.</p>
-                        <img src="{{url_for('static', filename = '/images/construction/12.jpeg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">A room in the building.</p>
-                        <img src="{{url_for('static', filename = '/images/construction/13.jpeg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">A bathroom and toilet.</p>
-                        <img src="{{url_for('static', filename = '/images/construction/14.jpeg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">A bathroom with a toilet and bath tub.</p>
-                        <img src="{{url_for('static', filename = '/images/construction/15.jpeg')}}" alt="">
-                    </li>
-                </ul>
-            </div>
-            <div class="sectionNames"><a href="{{url_for('projects')}}#interiors">Interior Works Below</a></div>
-            <div class="sectionArrow"><a href="{{url_for('projects')}}#interiors"><img src="{{url_for('static', filename = '/images/downarrow2.png')}}" alt=""></a></div>
-        </div>
-        <div class="hero" id="interiors">
-            <div class="carousel">
-                <div class="headings">INTERIORS</div>
-                <ul>
-                    <li>
-                        <p class="headingText">Living room interior design for a short-let apartment.</p>
-                        <img src="{{url_for('static', filename = '/images/interiors/1.jpeg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">Perspective view of the living room.</p>
-                        <img src="{{url_for('static', filename = '/images/interiors/2.jpeg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">View of the console area.</p>
-                        <img src="{{url_for('static', filename = '/images/interiors/3.jpeg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">Living room interior design.</p>
-                        <img src="{{url_for('static', filename = '/images/interiors/4.jpeg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">View of the living room interior.</p>
-                        <img src="{{url_for('static', filename = '/images/interiors/5.jpeg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">Interior decorations.</p>
-                        <img src="{{url_for('static', filename = '/images/interiors/6.jpeg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">Interior decorations</p>
-                        <img src="{{url_for('static', filename = '/images/interiors/7.jpeg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">View of tv console design.</p>
-                        <img src="{{url_for('static', filename = '/images/interiors/8.jpeg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">View of bedroom.</p>
-                        <img src="{{url_for('static', filename = '/images/interiors/9.jpeg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">The kitchen Interior.</p>
-                        <img src="{{url_for('static', filename = '/images/interiors/10.jpeg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">The overall living room.</p>
-                        <img src="{{url_for('static', filename = '/images/interiors/11.jpeg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">Toilet Interior. </p>
-                        <img src="{{url_for('static', filename = '/images/interiors/12.jpeg')}}" alt="">
-                    </li>
-                </ul>
-            </div>
-            <div class="sectionNames"><a href="{{url_for('projects')}}#renovations">Renovation Works Below</a></div>
-            <div class="sectionArrow"><a href="{{url_for('projects')}}#renovations"><img src="{{url_for('static', filename = '/images/downarrow2.png')}}" alt=""></a></div>
-        </div>
-        <div class="hero" id="renovations">
-            <div class="carousel">
-                <div class="headings">RENOVATIONS</div>
-                <ul>
-                    <li>
-                        <p class="headingText">Before Renovations</p>
-                        <img src="{{url_for('static', filename = '/images/renovations/1.jpeg')}}" alt="">
-                    </li>
-                    <li>
-                        <p class="headingText">After Renovations</p>
-                        <img src="{{url_for('static', filename = '/images/renovations/2.jpeg')}}" alt="">
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
+      <section id="construction" class="section">
+        <div class="maincontent">
+          <h1 class="headingText">Designs</h1>
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="{{ url_for('static', filename = 'js/jquery.flipster.min.js') }}"></script>
-    <script>
-        $('.carousel').flipster({
-            style: 'carousel',
-            spacing: -0.5,
-            start: 0,
-            scrollwheel: false,
-            loop: true
-        });
-    </script>
-</body>
+          <img class="mainImage" src="../static/images/designs/1.jpg" alt="" />
+          <div class="descriptions">
+            <div class="scope">
+              <span style="--i: 1"
+                ><img src="../static/images/designs/2.jpg" alt="not found"
+              /></span>
+              <span style="--i: 2"
+                ><img src="../static/images/designs/3.jpg" alt="not found"
+              /></span>
+              <span style="--i: 3"
+                ><img src="../static/images/designs/4.jpg" alt="not found"
+              /></span>
+              <span style="--i: 4"
+                ><img src="../static/images/designs/5.jpg" alt="not found"
+              /></span>
+              <span style="--i: 5"
+                ><img src="../static/images/designs/6.jpg" alt="not found"
+              /></span>
+              <span style="--i: 6"
+                ><img src="../static/images/designs/7.png" alt="not found"
+              /></span>
+              <span style="--i: 7"
+                ><img src="../static/images/designs/8.jpg" alt="not found"
+              /></span>
+              <span style="--i: 8"
+                ><img src="../static/images/designs/10.jpg" alt="not found"
+              /></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="construction" class="section">
+        <div class="maincontent">
+          <h1 class="headingText">Construction</h1>
+
+          <img class="mainImage" src="../static/images/construction/2.jpeg" alt="" />
+          <div class="descriptions">
+            <div class="scope">
+              <span style="--i: 1"
+                ><img src="../static/images/construction/1.jpg" alt="not found"
+              /></span>
+              <span style="--i: 2"
+                ><img src="../static/images/construction/3.jpeg" alt="not found"
+              /></span>
+              <span style="--i: 3"
+                ><img src="../static/images/construction/4.jpeg" alt="not found"
+              /></span>
+              <span style="--i: 4"
+                ><img src="../static/images/construction/5.jpeg" alt="not found"
+              /></span>
+              <span style="--i: 5"
+                ><img src="../static/images/construction/6.jpeg" alt="not found"
+              /></span>
+              <span style="--i: 6"
+                ><img src="../static/images/construction/7.jpeg" alt="not found"
+              /></span>
+              <span style="--i: 7"
+                ><img src="../static/images/construction/8.jpeg" alt="not found"
+              /></span>
+              <span style="--i: 8"
+                ><img src="../static/images/construction/9.jpeg" alt="not found"
+              /></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="construction" class="section">
+        <div class="maincontent">
+          <h1 class="headingText">Interiors</h1>
+
+          <img class="mainImage" src="../static/images/interiors/3.jpeg" alt="" />
+          <div class="descriptions">
+            <div class="scope">
+              <span style="--i: 1"
+                ><img src="../static/images/interiors/2.jpeg" alt="not found"
+              /></span>
+              <span style="--i: 2"
+                ><img src="../static/images/interiors/1.jpeg" alt="not found"
+              /></span>
+              <span style="--i: 3"
+                ><img src="../static/images/interiors/4.jpeg" alt="not found"
+              /></span>
+              <span style="--i: 4"
+                ><img src="../static/images/interiors/5.jpeg" alt="not found"
+              /></span>
+              <span style="--i: 5"
+                ><img src="../static/images/interiors/6.jpeg" alt="not found"
+              /></span>
+              <span style="--i: 6"
+                ><img src="../static/images/interiors/7.jpeg" alt="not found"
+              /></span>
+              <span style="--i: 7"
+                ><img src="../static/images/interiors/8.jpeg" alt="not found"
+              /></span>
+              <span style="--i: 8"
+                ><img src="../static/images/interiors/9.jpeg" alt="not found"
+              /></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="construction" class="section">
+        <div class="maincontent">
+          <h1 class="headingText">Renovations</h1>
+
+          <img class="mainImage" src="../static/images/renovations/3.jpeg" alt="" />
+          <div class="descriptions">
+            <div id="scope">
+              <span style="--i: 1"
+                ><img src="../static/images/renovations/1.jpeg" alt="not found"
+              /></span>
+              <span style="--i: 2"
+                ><img src="/static/images/renovations/2.jpeg" alt="not found"
+              /></span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
 </html>
