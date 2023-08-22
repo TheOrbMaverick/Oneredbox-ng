@@ -1,5 +1,5 @@
 from datetime import date, datetime, timedelta
-from flask import Flask, render_template, url_for, request, redirect
+from flask import Flask, render_template, url_for, request, redirect, send_from_directory
 #from flask_mysqldb import MySQL
 
 # installed mysql-connector-python using pip to be able to access this so I do not need to import the mysql using flask again
@@ -34,10 +34,10 @@ paystackApiKey = os.environ['PAYSTACK_API_KEY']
 
 #specified the database here with and stored it in cnx
 config = {
-    'user': 'TheOrbMaverick',
+    'user': 'root',
     'password': dbPass,
-    'host': dbPath,
-    'database': 'TheOrbMaverick$Oneredbox'
+    'host': 'localhost',
+    'database': 'Oneredbox'
 }
 
 
@@ -132,6 +132,11 @@ def login():
 
     return render_template("login.html")
 
+@app.route('/terms')
+def terms():
+    pdf_file = 'terms_of_service.pdf'
+    return send_from_directory(os.path.join(app.root_path, 'static/pdf'), pdf_file)
+
 
 @app.route('/getfreeQuote', methods = ['GET', 'POST'])
 def getfreeQuote():
@@ -143,7 +148,7 @@ def projectquote():
     return render_template("projectquote.html")
 
 
-@app.route('/signup', methods = ['GET', 'POST'])
+@app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
         cnx.reconnect()
@@ -157,6 +162,14 @@ def signup():
 
         #generate random link
         confirmation_code = ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))
+
+        # Check if email already exists
+        with cnx.cursor(dictionary=True) as cur:
+            cur.execute('SELECT COUNT(*) AS count FROM clients WHERE client_email = %s', (email,))
+            result = cur.fetchone()
+            if result['count'] > 0:
+                flash("Hey, your email already exists")
+                return render_template("signup.html")
 
         #adding query to insert into database
         with cnx.cursor(dictionary=True) as cur:
@@ -173,7 +186,6 @@ def signup():
         return redirect(url_for('confirm_email'))
 
     return render_template("signup.html")
-
 
 
 @app.route('/dashboard', methods = ['GET', 'POST'])
@@ -307,7 +319,7 @@ def newproject():
     update_desc = "Project brief created"
     proj_status = 0
 
-    with mysql.connector.connect(user='TheOrbMaverick', password= dbPass, host=dbPath, database='TheOrbMaverick$Oneredbox') as cnx:
+    with mysql.connector.connect(user='root', password= dbPass, host='localhost', database='Oneredbox') as cnx:
         # Insert the project
         with cnx.cursor(dictionary=True) as cur:
             cur.execute(query1, (projDesc, totalCost, amountPaid, commercial, tWoBath, twBath, study, kitchen, livrm, bedroom, totalArea, date_added, client_id))

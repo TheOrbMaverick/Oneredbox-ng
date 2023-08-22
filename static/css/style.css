@@ -19,6 +19,18 @@ h3 {
   color: #747474;
 }
 
+.passwarning {
+  color: red;
+  font-size: smaller;
+}
+
+#togglePassword {
+  border-radius: 10%;
+  background-color: #d79645;
+  color: white;
+}
+
+
 /* .under-form {
   font-size: 5em;
 } */
@@ -389,7 +401,9 @@ section {
       }
     }
   }
+
 }
+
 #signuppage {
   background-color: #171c1d;
 }
@@ -525,7 +539,7 @@ section {
 .inputbox input:valid ~ span,
 .inputbox input:focus ~ span {
   color: #d79645;
-  transform: translateX(-10px) translateY(-5px);
+  transform: translateX(-10px) translateY(-15px);
   font-size: 0.75em;
 }
 
@@ -1106,7 +1120,7 @@ body {
  * Ohyeah and the last one should go the other direction
  */
 #menuToggle input:checked ~ span:nth-last-child(2) {
-  transform: rotate(-45deg) translate(0, -1px);
+  transform: rotate(-45deg) translate(0, -3px);
 }
 
 /*

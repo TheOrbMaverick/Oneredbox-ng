@@ -1,9 +1,6 @@
 var counter = 0;
 
 window.addEventListener('load', () => {
-    const dashpage = document.querySelector("#dashboardpage");
-    const indexpage = document.querySelector("#homepage");
-    $('#myModal').modal('show');
 
     if(document.title === "Oneredbox - Sign up"){
         signuppage();
@@ -20,7 +17,6 @@ window.addEventListener('load', () => {
 })
 
 function dashboardpage () {
-    const paystackApiKey = JSON.parse(document.getElementById("paystackApiKey").innerHTML);
     const themeToggler = document.querySelector(".theme_toggler")
     const addProjectbtn = document.querySelector(".add-product")
     const addProjectDialog = document.querySelector(".box")
@@ -163,22 +159,6 @@ function dashboardpage () {
                 //updating he counter value in the browser so the user can see
                 valueSpan.innerHTML = counter;
             })
-        });
-    });
-
-    // Attach a click event listener to the logout button
-    $('#logout-btn').click(function() {
-        // Make an AJAX POST request to the Flask logout route
-        $.ajax({
-        url: '/logout',
-        type: 'POST',
-        success: function(response) {
-            // Redirect to the home page after the user is logged out
-            window.location.href = '/';
-        },
-        error: function(error) {
-            console.log(error);
-        }
         });
     });
 
@@ -371,11 +351,23 @@ function signuppage() {
     const passwarning = document.querySelector("#passwarning");
     const confirmpasswarning = document.querySelector("#confirm_passwarning");
     const createAccountBtn = document.querySelector("#mainSignupButton");
+    const checkbox = document.getElementById("terms");
 
-    //Disable ability to create account
-    if (createAccountBtn) {
-        createAccountBtn.disabled = true;
-    }
+    const toggleButton = document.getElementById("togglePassword");
+
+    toggleButton.addEventListener("click", () => {
+        if (createPassword.type === "password") {
+            createPassword.type = "text";
+        } else {
+            createPassword.type = "password";
+        }
+
+        if (confirmPassword.type === "password") {
+            confirmPassword.type = "text";
+        } else {
+            confirmPassword.type = "password";
+        }
+    });
 
     //when you clicj the login button on the sign up page
     if (loginBtn) {
@@ -389,35 +381,52 @@ function signuppage() {
 
     // Define a function to check the password
     function checkPassword() {
-    var password = createPassword.value;
+        var password = createPassword.value;
 
-    // Check for required password criteria
-    var hasDigit = /[0-9]/.test(password);
-    var hasLowercase = /[a-z]/.test(password);
-    var hasUppercase = /[A-Z]/.test(password);
-    var hasSpecialChar = specialChars.test(password);
-    var isLongEnough = password.length >= 6;
+        // Check for required password criteria
+        var hasDigit = /[0-9]/.test(password);
+        var hasLowercase = /[a-z]/.test(password);
+        var hasUppercase = /[A-Z]/.test(password);
+        var hasSpecialChar = specialChars.test(password);
+        var isLongEnough = password.length >= 6;
 
-    // Display the password warning message if necessary
-    if (!hasDigit || !hasLowercase || !hasUppercase || !hasSpecialChar || !isLongEnough) {
-        passwarning.style.display = "block";
-        passwarning.style.color = "red";
-        createAccountBtn.disabled = true;
-    } else {
-        passwarning.style.display = "none";
-    }
-    }
-
-    function confirmPass() {
-        if (createPassword.value !== confirmPassword.value) {
-            confirmpasswarning.style.display = "block";
-            confirmpasswarning.style.color = "red";
+        // Display the password warning message if necessary
+        if (!hasDigit || !hasLowercase || !hasUppercase || !hasSpecialChar || !isLongEnough) {
+            passwarning.style.display = "block";
+            passwarning.style.color = "red";
             createAccountBtn.disabled = true;
-        }else{
-            confirmpasswarning.style.display = "none";
-            createAccountBtn.disabled = false;
+        } else {
+            passwarning.style.display = "none";
         }
     }
+
+            // Add event listener to the checkbox
+        checkbox.addEventListener('change', () => {
+            updateButtonState();
+        });
+
+        // Add event listener to the password inputs
+        createPassword.addEventListener('input', () => {
+            updateButtonState();
+        });
+
+        confirmPassword.addEventListener('input', () => {
+            updateButtonState();
+        });
+
+        // Function to update the button state
+        function updateButtonState() {
+            if (createPassword.value === confirmPassword.value) {
+                confirmpasswarning.style.display = "none";
+                if(checkbox.checked) {
+                    createAccountBtn.disabled = false;
+                }
+            } else {
+                confirmpasswarning.style.display = "block";
+                confirmpasswarning.style.color = "red";
+                createAccountBtn.disabled = true;
+            }
+        }
 
     if (createPassword) {
         // Call the checkPassword function when the createPassword button is clicked
@@ -430,6 +439,8 @@ function signuppage() {
         confirmPassword.addEventListener("input", confirmPass)
         confirmPassword.addEventListener("input", confirmPass)
     }
+
+    
 
 }
 
