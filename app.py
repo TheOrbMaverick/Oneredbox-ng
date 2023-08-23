@@ -669,8 +669,12 @@ def generate_invoice():
     c.setFont("Helvetica-Bold", 14)
     c.drawString(1*inch, 5.5*inch, "Account Information:")
     c.setFont("Helvetica", 12)
-    c.drawString(1*inch, 5.25*inch, "Currency: USD")
-    c.drawString(1*inch, 5*inch, "Company Account Number: 1234567890")
+    c.drawString(1*inch, 5.25*inch, " ")
+    c.drawString(1*inch, 5*inch, "USD Account Number: 1807456384")
+    c.drawString(1*inch, 5*inch, "POUNDS Account Number: 1805574345")
+    c.drawString(1*inch, 5*inch, "EURO Account Number: 1808139516")
+    c.drawString(1*inch, 5*inch, "Sort Code: 044080439")
+    c.drawString(1*inch, 5*inch, "Swift Code: ABNGNGLA")
     c.drawString(1*inch, 4.75*inch, "Company Account Name: Oneredbox Properties")
 
     # Save canvas and return the generated file
