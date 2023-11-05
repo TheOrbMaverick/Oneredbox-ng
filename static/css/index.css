@@ -27,6 +27,12 @@ body {
 .logoImage {
     max-width: 4rem;
     height: auto;
+    transition: all .55s ease;
+}
+
+.logoImage:hover {
+    color: #d79645;
+    transform: translateY(-5px);
 }
 
 /* .logo {
@@ -49,7 +55,8 @@ body {
 }
 
 .navlist a:hover{
-    border-bottom: 2px solid white;
+    border-bottom: 2px solid #d79645;
+    color: #d79645;
 }
 
 #menu-icon {
@@ -64,14 +71,15 @@ body {
     height: 100%;
     width: 100%;
     min-height: 100vh;
-    background: linear-gradient(
+    /* background: linear-gradient(
         to right bottom,
         #374141,
         #2c3435,
         #222828,
         #171c1d,
         #0b0f10
-      );
+      ); */
+    background: #222828;
     position: relative;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -105,7 +113,7 @@ section {
     font-weight: 800;
     color: white;
     margin-bottom: 20px;
-    filter: drop-shadow(0px 4px 1px black);
+    filter: drop-shadow(0px 4px 1px rgb(35, 33, 33));
 }
 
 .hero-text h4 span {
@@ -295,6 +303,9 @@ section {
     .hero-img img {
         width: 100%;
         height: auto;
+    }
+    .hero-text h4 {
+        font-weight: 1000;
     }
 }
 
