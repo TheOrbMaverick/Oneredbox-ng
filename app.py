@@ -355,13 +355,13 @@ def newproject():
 
 
 def calculateArea(spaces):
-    bedrooom = spaces['Bedroom'] * 19.2
+    bedrooom = spaces['Bedroom'] * 13
     commercial = spaces['Commercial space (number of people)'] * 6.6
-    kitchen = spaces['Kitchen'] * 22
-    livrm = spaces['Living Room'] * 30
+    kitchen = spaces['Kitchen'] * 16
+    livrm = spaces['Living Room'] * 25
     study = spaces['Study'] * 12.0
-    twBath = spaces['Toilet with bath'] * 4.2
-    tWoBath = spaces['Toilet without bath'] * 3.2
+    twBath = spaces['Toilet with bath'] * 5
+    tWoBath = spaces['Toilet without bath'] * 1.35
     circulation = 15.2
 
     total = bedrooom + commercial + kitchen + livrm + study + twBath + tWoBath + circulation
@@ -370,8 +370,8 @@ def calculateArea(spaces):
     return totalArea
 
 def calculateCost(area):
-    naira = area * 310000
-    cost = round(naira / 460)
+    naira = area * 340000
+    cost = round(naira / 760)
     return cost
 
 @app.route('/confirm_email')
@@ -393,7 +393,6 @@ def confirm_email():
         with cnx.cursor(dictionary=True) as cur:
             cur.execute("UPDATE clients SET confirmed = 1 WHERE client_email = %s AND confirmation_code = %s", (email, code))
             cnx.commit()
-
 
         return render_template('confirm_email.html')
     else:
