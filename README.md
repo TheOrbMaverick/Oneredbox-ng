@@ -8,7 +8,7 @@ These projects show the extent of work done, the ones presently ongoing and the 
 It also shows the price for each of the stages ina beautifully rendered UI.
 
 Technical:
-Python with flask
-HTML
-CSS
+Python with flask,
+HTML,
+CSS,
 MySQL Database
